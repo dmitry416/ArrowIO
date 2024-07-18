@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _charCont.Move(_input.Player.Move.ReadValue<Vector2>());
+        Vector2 dir = _input.Player.Move.ReadValue<Vector2>();
+        _charCont.Move(dir);
+        _charCont.Rotate(dir);
     }
 }

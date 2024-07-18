@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 765450093}
   - component: {fileID: 765450095}
   - component: {fileID: 765450094}
+  - component: {fileID: 765450096}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -328,6 +329,18 @@ CapsuleCollider:
   m_Height: 1.84
   m_Direction: 1
   m_Center: {x: 0, y: 0.91, z: 0}
+--- !u!114 &765450096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765450089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c23376ebb0b404ca4098b1736d33cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &844586752
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gipsy_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8376584311077705008, guid: 811755e190d963045a88cbc641669d33, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2bf46fc69b811704c9a2d2368416ab67, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -741,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
+  m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 6.95, z: -3.96}
   m_XDamping: 1
   m_YDamping: 1
