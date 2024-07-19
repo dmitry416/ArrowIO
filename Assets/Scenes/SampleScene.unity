@@ -5803,8 +5803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cvc: {fileID: 844586753}
   _playerPrefab: {fileID: 767419475272401555, guid: b3bab9e9aba51e34887ff7a72989bf6a, type: 3}
-  _playerHero: 4
-  _playerSkin: 2
+  _playerHero: 3
+  _playerSkin: 0
   _playerWeapon: 0
 --- !u!4 &1791826986
 Transform:
