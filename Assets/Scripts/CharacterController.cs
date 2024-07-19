@@ -4,16 +4,20 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
+    [SerializeField] private Transform _hand;
     [SerializeField] private float _speed;
     [SerializeField] private float _health = 50;
     [SerializeField] private int _lvl = 1;
     [SerializeField] private float _coins = 0;
+
     private bool isDead = false;
     private Rigidbody _rb;
     private CharacterAnimationController _animController;
+    private WeaponPrefabs _weaponPrefabs;
 
-    private void Start()
+    private void Awake()
     {
+        _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();
         _rb = GetComponent<Rigidbody>();
         _animController = GetComponent<CharacterAnimationController>();
     }
@@ -71,5 +75,22 @@ public class CharacterController : MonoBehaviour
         _rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
         Destroy(gameObject, 5);
+    }
+
+    public void SetWeapon(int id)
+    {
+        _weapon = Instantiate(_weaponPrefabs.GetWeapon(0), _hand).GetComponent<Weapon>();
+        _weapon.parent = this;
+    }
+
+    public void SetHero(GameObject hero)
+    {
+        Instantiate(hero, transform);
+        _animController.UpdateAnimator();
+    }
+
+    public void SetSkin(int skin)
+    {
+        GetComponentInChildren<CharacterModel>().ChangeSkin(skin);
     }
 }

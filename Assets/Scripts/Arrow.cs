@@ -48,6 +48,7 @@ public class Arrow : MonoBehaviour
             Destroy(gameObject);
         }
         Destroy(gameObject, 3);
+        GetComponent<Collider>().enabled = false;
         _collided = true;
     }
 }
