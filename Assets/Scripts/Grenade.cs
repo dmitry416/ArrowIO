@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Grenade : GrenadeFast
@@ -13,7 +12,7 @@ public class Grenade : GrenadeFast
         _rb.isKinematic = false;
         transform.parent = null;
         _started = true;
-        _rb.AddForce(transform.forward * _hand._speed * 30);
-        Invoke("Explode", _hand._distance / 2);
+        _rb.AddForce(transform.forward * _speed * _hand._speedBaff * 30);
+        Invoke("Explode", _distance * _hand._distanceBaff / 2);
     }
 }

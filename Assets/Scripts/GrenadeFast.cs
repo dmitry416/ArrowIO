@@ -9,9 +9,9 @@ public class GrenadeFast : Shuriken
     protected override IEnumerator Fly()
     {
         _startPos = transform.position;
-        while (!_collided && Vector3.Distance(transform.position, _startPos) < _hand._distance)
+        while (!_collided && Vector3.Distance(transform.position, _startPos) < _distance * _hand._distanceBaff)
         {
-            _rb.MovePosition(_rb.position + transform.forward * _hand._speed * Time.deltaTime * -1);
+            _rb.MovePosition(_rb.position + transform.forward * _speed * _hand._speedBaff * Time.deltaTime * -1);
             yield return null;
         }
         Explode();
@@ -32,7 +32,7 @@ public class GrenadeFast : Shuriken
         foreach (Collider hit in Physics.OverlapSphere(transform.position, _radius))
             if (hit.gameObject.TryGetComponent(out CharacterController enemy))
                 if (enemy != _hand.parent)
-                    enemy.TakeDamage(_hand.parent, _hand._damage);
+                    enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0, 1) <= _critChance ? 2 : 1));
         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

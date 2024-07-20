@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3530318340417410291}
   - component: {fileID: 5956313745037876405}
   - component: {fileID: 5680059699376317142}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boomerang_standardShader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7489100913965114885}
   - component: {fileID: 3684950207846741784}
   - component: {fileID: 3117744132146538790}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9c9dd6a846c9b4585f049ac0c13fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 7
+  _critChance: 0.3
+  _distance: 5
+  _speed: 7
 --- !u!65 &3117744132146538790
 BoxCollider:
   m_ObjectHideFlags: 0

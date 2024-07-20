@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7624960376430786916}
   - component: {fileID: 2845961785045161116}
   - component: {fileID: 6737544673185061976}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bottle_standardShader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00622dc624ce354d9a98848fa11ef0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 5
+  _critChance: 0.2
+  _distance: 4
+  _speed: 5
   _radius: 0.5
   _explosionPrefab: {fileID: 100000, guid: 0991b13a56d32c1419635d455964b236, type: 3}
   _delta: 1

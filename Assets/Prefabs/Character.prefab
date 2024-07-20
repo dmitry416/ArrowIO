@@ -179,8 +179,8 @@ MonoBehaviour:
   isBack: 0
   isSide: 0
   isFrontSide: 0
-  _damage: 10
-  _critChance: 0.2
-  _distance: 5
-  _speed: 10
+  _damageBaff: 1
+  _critChanceBaff: 1
+  _distanceBaff: 1
+  _speedBaff: 1
   _cd: 1

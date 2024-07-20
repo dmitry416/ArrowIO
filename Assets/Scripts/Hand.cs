@@ -13,11 +13,11 @@ public class Hand : MonoBehaviour
     public bool isSide = false;
     public bool isFrontSide = false;
 
-    public int _damage;
-    public float _critChance;
-    public float _distance;
-    public float _speed;
-    public float _cd;
+    public int _damageBaff = 1;
+    public float _critChanceBaff = 1;
+    public float _distanceBaff = 1;
+    public float _speedBaff = 1;
+    public float _cd = 1;
 
     private List<Weapon> _weapons = new List<Weapon>();
     private GameObject _bow;
@@ -29,21 +29,31 @@ public class Hand : MonoBehaviour
 
         if (isDouble)
         {
-
+            _weapons.Add(Instantiate(weapon, transform));
+            _weapons[_weapons.Count - 1].transform.localPosition += new Vector3(0.2f, 0, 0);
+            _weapons.Add(Instantiate(weapon, transform));
+            _weapons[_weapons.Count - 1].transform.localPosition -= new Vector3(0.2f, 0, 0);
         }
         else
             _weapons.Add(Instantiate(weapon, transform));
         if (isFrontSide)
         {
-            
+            _weapons.Add(Instantiate(weapon, transform));
+            _weapons[_weapons.Count - 1].transform.Rotate(new Vector3(0, 45, 0));
+            _weapons.Add(Instantiate(weapon, transform));
+            _weapons[_weapons.Count - 1].transform.Rotate(new Vector3(0, -45, 0));
         }
         if (isSide)
         {
-
+            _weapons.Add(Instantiate(weapon, transform));
+            _weapons[_weapons.Count - 1].transform.Rotate(new Vector3(0, 90, 0));
+            _weapons.Add(Instantiate(weapon, transform));
+            _weapons[_weapons.Count - 1].transform.Rotate(new Vector3(0, -90, 0));
         }
         if (isBack)
         {
-            
+            _weapons.Add(Instantiate(weapon, transform));
+            _weapons[_weapons.Count - 1].transform.Rotate(new Vector3(180, 0, 0));
         }
 
         foreach (Weapon w in _weapons)

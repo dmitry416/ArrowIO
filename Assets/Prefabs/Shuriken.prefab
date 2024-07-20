@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7451902631042483511}
   - component: {fileID: 7248422427602472376}
   - component: {fileID: 9198928659760457119}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shuriken03_standardShader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8893936949533258793}
   - component: {fileID: 2337550891277006653}
   - component: {fileID: 101595661053008719}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shuriken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,3 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d033ea8ce45da4cb3d9eb5a30aa60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
+  _critChance: 0.3
+  _distance: 5
+  _speed: 7

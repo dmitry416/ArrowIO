@@ -14,7 +14,7 @@ public class Shuriken : Weapon
     {
         while (!_collided)
         {
-            transform.Rotate(Vector3.forward, 15);
+            transform.Rotate(Vector3.forward, 10);
             yield return null;
         }
     }

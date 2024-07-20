@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3250015695748460234}
   - component: {fileID: 2703723232351454486}
   - component: {fileID: 5769144071312998462}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade03_standardShader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,5 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b60dc44e0e47647bb9606f68a181da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
+  _critChance: 0.3
+  _distance: 5
+  _speed: 7
   _radius: 0.5
   _explosionPrefab: {fileID: 100000, guid: 87e9fabe9d394824499377828e8c5b9f, type: 3}

@@ -6,9 +6,9 @@ public class Boomerang : Shuriken
     protected override IEnumerator Fly()
     {
         _startPos = transform.position;
-        while (!_collided && Vector3.Distance(transform.position, _startPos) < _hand._distance)
+        while (!_collided && Vector3.Distance(transform.position, _startPos) < _distance * _hand._distanceBaff)
         {
-            _rb.MovePosition(_rb.position + transform.forward * _hand._speed * Time.deltaTime * -1);
+            _rb.MovePosition(_rb.position + transform.forward * _speed * _hand._speedBaff * Time.deltaTime * -1);
             yield return null;
         }
         if (!_collided)
@@ -19,7 +19,7 @@ public class Boomerang : Shuriken
     {
         while (!_collided && Vector3.Distance(transform.position, _startPos) > 0.1f)
         {
-            _rb.MovePosition(_rb.position + (_startPos - transform.position).normalized * _hand._speed * Time.deltaTime);
+            _rb.MovePosition(_rb.position + (_startPos - transform.position).normalized * _speed * _hand._speedBaff * Time.deltaTime);
             yield return null;
         }
         Destroy(gameObject);
@@ -33,7 +33,7 @@ public class Boomerang : Shuriken
         {
             if (enemy == _hand.parent)
                 return;
-            enemy.TakeDamage(_hand.parent, _hand._damage);
+            enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0, 1) <= _critChance ? 2 : 1));
             Destroy(gameObject);
         }
         Destroy(gameObject, 3);

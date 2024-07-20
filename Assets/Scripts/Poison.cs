@@ -21,6 +21,6 @@ public class Poison : GrenadeFast
     protected void PoisonEnemys()
     {
         foreach (CharacterController enemy in _poisonedEnemys)
-            enemy.TakeDamage(_hand.parent, _hand._damage);
+            enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0, 1) <= _critChance ? 2 : 1));
     }
 }
