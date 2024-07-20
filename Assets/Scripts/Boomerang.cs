@@ -1,22 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Weapon : MonoBehaviour
+public class Boomerang : Shuriken
 {
-    protected Hand _hand;
-    protected Vector3 _startPos;
-    protected bool _collided = false;
-    protected bool _started = false;
-    protected Rigidbody _rb;
-
-    protected void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _hand = GetComponentInParent<Hand>();
-    }
-
-    protected virtual IEnumerator Fly()
+    protected override IEnumerator Fly()
     {
         _startPos = transform.position;
         while (!_collided && Vector3.Distance(transform.position, _startPos) < _hand._distance)
@@ -25,10 +12,20 @@ public class Weapon : MonoBehaviour
             yield return null;
         }
         if (!_collided)
-            Destroy(gameObject);
+            StartCoroutine(FlyBack());
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    protected IEnumerator FlyBack()
+    {
+        while (!_collided && Vector3.Distance(transform.position, _startPos) > 0.1f)
+        {
+            _rb.MovePosition(_rb.position + (_startPos - transform.position).normalized * _hand._speed * Time.deltaTime);
+            yield return null;
+        }
+        Destroy(gameObject);
+    }
+
+    protected override void OnTriggerEnter(Collider other)
     {
         if (!_started)
             return;
@@ -42,13 +39,5 @@ public class Weapon : MonoBehaviour
         Destroy(gameObject, 3);
         GetComponent<Collider>().enabled = false;
         _collided = true;
-    }
-
-    public virtual void Go()
-    {
-        _rb.isKinematic = false;
-        transform.parent = null;
-        _started = true;
-        StartCoroutine(Fly());
     }
 }

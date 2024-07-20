@@ -3469,7 +3469,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objects:
-  - {fileID: 6951716878619530798, guid: 27ecdc7f25026564296fabded6b14839, type: 3}
+  - {fileID: 4556636876547718458, guid: 9ef3f87e50183cf4bb434f8f8b04ed34, type: 3}
+  - {fileID: 297389968396207304, guid: 24ef56b6fb1ab03498a14047fc82b91b, type: 3}
+  - {fileID: 8519547156077915198, guid: 182d740c4178f7247a33d17367b5651e, type: 3}
+  - {fileID: 6218248164304723275, guid: be3036c536f559f458f16a02927b8e2c, type: 3}
+  - {fileID: 1174839306143485739, guid: f1bbc38e114d4c44ba4531a80906f41c, type: 3}
+  - {fileID: 6477367244167319625, guid: 308d4b1b46b2e70448cf9bbd46d0f658, type: 3}
 --- !u!4 &971675904
 Transform:
   m_ObjectHideFlags: 0
@@ -5805,7 +5810,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 767419475272401555, guid: b3bab9e9aba51e34887ff7a72989bf6a, type: 3}
   _playerHero: 3
   _playerSkin: 0
-  _playerWeapon: 0
+  _playerWeapon: 5
 --- !u!4 &1791826986
 Transform:
   m_ObjectHideFlags: 0

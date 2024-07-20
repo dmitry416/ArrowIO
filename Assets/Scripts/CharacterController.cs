@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController))]
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] private Weapon _weapon;
-    [SerializeField] private Transform _hand;
+    //[SerializeField] private Weapon _weapon;
+    [SerializeField] private Hand _hand;
     [SerializeField] private float _speed;
     [SerializeField] private float _health = 50;
     [SerializeField] private int _lvl = 1;
@@ -46,11 +46,13 @@ public class CharacterController : MonoBehaviour
     {
         if (isDead)
             return;
-        _weapon.Shoot();
+        _hand.Shoot();
     }
 
     public void TakeDamage(CharacterController from, float damage)
     {
+        if (from == this)
+            return;
         _health -= damage;
         if (_health <= 0)
         {
@@ -71,7 +73,7 @@ public class CharacterController : MonoBehaviour
     {
         _animController.Death();
         isDead = true;
-        Destroy(_weapon.gameObject);
+        Destroy(_hand.gameObject);
         _rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
         Destroy(gameObject, 5);
@@ -79,8 +81,13 @@ public class CharacterController : MonoBehaviour
 
     public void SetWeapon(int id)
     {
-        _weapon = Instantiate(_weaponPrefabs.GetWeapon(0), _hand).GetComponent<Weapon>();
-        _weapon.parent = this;
+        _hand.weapon = _weaponPrefabs.GetWeapon(id).GetComponent<Weapon>();
+        if (id == 0)
+            _hand.SpawnBow();
+        else
+            _hand.DespawnBow();
+        _hand.PrepareWeapon();
+
     }
 
     public void SetHero(GameObject hero)
