@@ -26,7 +26,6 @@ public class Hand : MonoBehaviour
     public void PrepareWeapon()
     {
         _weapons.Clear();
-
         if (isDouble)
         {
             _weapons.Add(Instantiate(weapon, transform));
