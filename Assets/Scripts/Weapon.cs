@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
         {
             if (enemy == _hand.parent)
                 return;
-            enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0, 1) <= _critChance ? 2 : 1));
+            enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0, 1) <= _critChance + _hand._critChanceBaff ? 2 : 1));
             Destroy(gameObject);
         }
         Destroy(gameObject, 3);

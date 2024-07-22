@@ -13,8 +13,8 @@ public class Hand : MonoBehaviour
     public bool isSide = false;
     public bool isFrontSide = false;
 
-    public int _damageBaff = 1;
-    public float _critChanceBaff = 1;
+    public float _damageBaff = 1;
+    public float _critChanceBaff = 0;
     public float _distanceBaff = 1;
     public float _speedBaff = 1;
     public float _cd = 1;

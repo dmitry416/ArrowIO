@@ -1,25 +1,37 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController))]
 public class CharacterController : MonoBehaviour
 {
-    //[SerializeField] private Weapon _weapon;
     [SerializeField] private Hand _hand;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _health = 50;
-    [SerializeField] private int _lvl = 1;
-    [SerializeField] private float _coins = 0;
+    [SerializeField] public float _speed;
+    [SerializeField] public float _health = 50;
+    [SerializeField] private int _lvl = 0;
+    [SerializeField] private float _coins = 1;
 
     private bool isDead = false;
     private Rigidbody _rb;
     private CharacterAnimationController _animController;
+    private CharacterUIController _ui;
     private WeaponPrefabs _weaponPrefabs;
+    public float _curHealth;
+    public Action onLVLUp;
+    public Action<int> onCoinChanged;
 
     private void Awake()
     {
         _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();
         _rb = GetComponent<Rigidbody>();
         _animController = GetComponent<CharacterAnimationController>();
+        _ui = GetComponent<CharacterUIController>();
+        _curHealth = _health;
+    }
+
+    private void Start()
+    {
+        _ui.SetHP(_curHealth / _health);
+        CheckCoins();
     }
 
     public void Move(Vector2 direction)
@@ -53,20 +65,22 @@ public class CharacterController : MonoBehaviour
     {
         if (from == this)
             return;
-        _health -= damage;
-        if (_health <= 0)
+        _curHealth -= damage;
+        if (_curHealth <= 0)
         {
-            _health = 0;
+            _curHealth = 0;
             from.AddCoins(_lvl * 10);
             Death();
         }
         else
             _animController.Hit();
+        _ui.SetHP(_curHealth / _health);
     }
 
     public void AddCoins(int coins)
     {
         _coins += coins;
+        CheckCoins();
     }
 
     private void Death()
@@ -87,7 +101,6 @@ public class CharacterController : MonoBehaviour
         else
             _hand.DespawnBow();
         _hand.PrepareWeapon();
-
     }
 
     public void SetHero(GameObject hero)
@@ -99,5 +112,16 @@ public class CharacterController : MonoBehaviour
     public void SetSkin(int skin)
     {
         GetComponentInChildren<CharacterModel>().ChangeSkin(skin);
+    }
+
+    public void CheckCoins()
+    {
+        onCoinChanged?.Invoke(Mathf.Min(100, (int)(_coins / Mathf.Pow(2, _lvl) * 100)));
+        if (_lvl == 10 || Mathf.Pow(2, _lvl) > _coins)
+            return;
+        _coins -= Mathf.Pow(2, _lvl);
+        _lvl++;
+        _ui.SetLVL(_lvl);
+        onLVLUp?.Invoke();
     }
 }
