@@ -1,5 +1,7 @@
 using System;
+using UnityEditor;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 [RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController))]
 public class CharacterController : MonoBehaviour
@@ -7,7 +9,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Hand _hand;
     [SerializeField] public float _speed;
     [SerializeField] public float _health = 50;
-    [SerializeField] private int _lvl = 0;
+    [SerializeField] public int _lvl = 0;
     [SerializeField] private float _coins = 1;
 
     private bool isDead = false;
@@ -17,11 +19,16 @@ public class CharacterController : MonoBehaviour
     private WeaponPrefabs _weaponPrefabs;
     public float _curHealth;
     public Action onLVLUp;
+    public Action onDeath;
     public Action<int> onCoinChanged;
+    public Transform _target;
+    public string _nick;
+    private LeaderboardUI _leaderboard;
 
     private void Awake()
     {
         _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();
+        _leaderboard = FindObjectOfType<LeaderboardUI>();
         _rb = GetComponent<Rigidbody>();
         _animController = GetComponent<CharacterAnimationController>();
         _ui = GetComponent<CharacterUIController>();
@@ -32,6 +39,36 @@ public class CharacterController : MonoBehaviour
     {
         _ui.SetHP(_curHealth / _health);
         CheckCoins();
+    }
+
+    private void Update()
+    {
+        FindClosestEnemy();
+    }
+
+    private void FindClosestEnemy()
+    {
+        _target = null;
+        float distance = Mathf.Infinity;
+        foreach (Collider go in Physics.OverlapSphere(transform.position, 10, 1 << 6))
+        {
+            if (go.GetComponent<CharacterController>().isDead || go.GetComponent<CharacterController>() == this)
+                continue;
+            float curDistance = (go.transform.position - transform.position).sqrMagnitude;
+            if (curDistance < distance)
+            {
+                _target = go.transform;
+                distance = curDistance;
+            }
+        }
+        if (_target != null)
+            Rotate(Vector2.one);
+    }
+
+    public void AddHealth(int health)
+    {
+        _curHealth = Mathf.Min(_health, _curHealth + health);
+        _ui.SetHP(_curHealth / _health);
     }
 
     public void Move(Vector2 direction)
@@ -45,12 +82,15 @@ public class CharacterController : MonoBehaviour
         }
         _animController.Running(true);
         _rb.MovePosition(_rb.position + new Vector3(direction.x, 0, direction.y) * Time.deltaTime * _speed);
+        Rotate(direction);
     }
 
     public void Rotate(Vector2 direction)
     {
         if (isDead || direction == Vector2.zero)
             return;
+        if (_target != null)
+            direction = (new Vector2(_target.position.x, _target.position.z) - new Vector2(_rb.position.x, _rb.position.z)).normalized;
         transform.rotation = Quaternion.Euler(0, Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg, 0);
     }
 
@@ -63,13 +103,13 @@ public class CharacterController : MonoBehaviour
 
     public void TakeDamage(CharacterController from, float damage)
     {
-        if (from == this)
+        if (from == this || isDead)
             return;
         _curHealth -= damage;
         if (_curHealth <= 0)
         {
             _curHealth = 0;
-            from.AddCoins(_lvl * 10);
+            from.AddCoins((int)MathF.Pow(2, _lvl));
             Death();
         }
         else
@@ -87,10 +127,16 @@ public class CharacterController : MonoBehaviour
     {
         _animController.Death();
         isDead = true;
-        Destroy(_hand.gameObject);
+        _hand.gameObject.SetActive(false);
         _rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
+        onDeath?.Invoke();
         Destroy(gameObject, 5);
+    }
+
+    public void SetNick(string nick)
+    {
+        _nick = nick;
     }
 
     public void SetWeapon(int id)
@@ -121,6 +167,7 @@ public class CharacterController : MonoBehaviour
             return;
         _coins -= Mathf.Pow(2, _lvl);
         _lvl++;
+        _leaderboard.UpdateLeaderboard();
         _ui.SetLVL(_lvl);
         onLVLUp?.Invoke();
     }

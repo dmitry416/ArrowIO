@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class Poison : GrenadeFast
@@ -7,15 +8,17 @@ public class Poison : GrenadeFast
     protected List<CharacterController> _poisonedEnemys = new List<CharacterController>();
     protected override void Explode()
     {
-        foreach (Collider hit in Physics.OverlapSphere(transform.position, _radius))
+        foreach (Collider hit in Physics.OverlapSphere(transform.position, _radius, 1 << 6))
             if (hit.gameObject.TryGetComponent(out CharacterController enemy))
                 if (enemy != _hand.parent)
                     _poisonedEnemys.Add(enemy);
         Invoke("PoisonEnemys", _delta);
         Invoke("PoisonEnemys", _delta * 2);
         Invoke("PoisonEnemys", _delta * 3);
-        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        _explosionPrefab.SetActive(true);
+        _explosionPrefab.transform.parent = null;
+        gameObject.SetActive(false);
+        Destroy(gameObject, _delta * 3 + 1);
     }
 
     protected void PoisonEnemys()

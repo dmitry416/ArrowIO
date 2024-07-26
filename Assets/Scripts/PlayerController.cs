@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
         _hand = GetComponentInChildren<Hand>();
         _skillCont = FindObjectOfType<SkillGroupController>();
         _charCont.onCoinChanged += _playerUI.UpdateUI;
+        _charCont.SetNick("Тест");
         _skillCont.onSelect += SelectSkill;
         _charCont.onLVLUp += LVLUp;
     }
@@ -36,8 +37,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector2 dir = _input.Player.Move.ReadValue<Vector2>();
+        if (dir == Vector2.zero)
+            dir = new Vector2(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"));
         _charCont.Move(dir);
-        _charCont.Rotate(dir);
     }
 
     private void LVLUp()

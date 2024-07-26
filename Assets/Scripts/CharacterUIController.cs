@@ -14,6 +14,6 @@ public class CharacterUIController : MonoBehaviour
 
     public void SetHP(float hp)
     {
-        _hpSlider.value = hp;
+        _hpSlider.value = hp; 
     }
 }

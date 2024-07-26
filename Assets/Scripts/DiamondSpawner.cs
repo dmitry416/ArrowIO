@@ -1,5 +1,5 @@
+using DG.Tweening;
 using UnityEngine;
-
 public class DiamondSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _leftDownCorner;

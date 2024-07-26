@@ -5,6 +5,7 @@ public class CharacterAnimationController : MonoBehaviour
     private const string isRunning = "isRunning", win = "win", fail = "fail", death = "death", hit = "hit";
 
     private Animator _animator;
+    private bool _isDead = false;
 
     private void Start()
     {
@@ -18,11 +19,15 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void Running(bool state)
     {
+        if (_isDead)
+            return;
         _animator.SetBool(isRunning, state);
     }
 
     public void Win()
     {
+        if (_isDead)
+            return;
         _animator.SetTrigger(win);
     }
 
@@ -33,11 +38,14 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void Death()
     {
+        _isDead = true;
         _animator.SetTrigger(death);
     }
 
     public void Hit() 
     {
+        if (_isDead)
+            return;
         _animator.SetTrigger(hit);
     }
 }

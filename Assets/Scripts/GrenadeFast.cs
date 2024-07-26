@@ -29,11 +29,12 @@ public class GrenadeFast : Shuriken
 
     protected virtual void Explode()
     {
-        foreach (Collider hit in Physics.OverlapSphere(transform.position, _radius))
+        foreach (Collider hit in Physics.OverlapSphere(transform.position, _radius, 1 << 6))
             if (hit.gameObject.TryGetComponent(out CharacterController enemy))
                 if (enemy != _hand.parent)
-                    enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0, 1) <= _critChance ? 2 : 1));
-        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                    enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0f, 1f) <= _critChance ? 2 : 1));
+        _explosionPrefab.SetActive(true);
+        _explosionPrefab.transform.parent = null;
         Destroy(gameObject);
     }
 }

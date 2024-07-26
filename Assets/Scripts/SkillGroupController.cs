@@ -24,20 +24,20 @@ public class SkillGroupController : MonoBehaviour
 {
     [SerializeField] private GameObject[] _skillButtons;
     private Image[] _skillButtonsIcons;
-    private Skill[] _skills;
+    protected Skill[] _skills;
     private Skill[] _activeSkills = new Skill[3];
     [Space]
-    [SerializeField] private Sprite _double;
-    [SerializeField] private Sprite _frontSide;
-    [SerializeField] private Sprite _side;
-    [SerializeField] private Sprite _back;
-    [SerializeField] private Sprite _damage;
-    [SerializeField] private Sprite _critDamage;
-    [SerializeField] private Sprite _weaponSpeed;
-    [SerializeField] private Sprite _distance;
-    [SerializeField] private Sprite _walkSpeed;
-    [SerializeField] private Sprite _cd;
-    [SerializeField] private Sprite _health;
+    [SerializeField] protected Sprite _double;
+    [SerializeField] protected Sprite _frontSide;
+    [SerializeField] protected Sprite _side;
+    [SerializeField] protected Sprite _back;
+    [SerializeField] protected Sprite _damage;
+    [SerializeField] protected Sprite _critDamage;
+    [SerializeField] protected Sprite _weaponSpeed;
+    [SerializeField] protected Sprite _distance;
+    [SerializeField] protected Sprite _walkSpeed;
+    [SerializeField] protected Sprite _cd;
+    [SerializeField] protected Sprite _health;
     private int _activations = 0;
     private bool _isActive = false;
     public Action<Skills> onSelect; 
