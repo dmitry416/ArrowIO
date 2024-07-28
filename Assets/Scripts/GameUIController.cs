@@ -13,7 +13,7 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private RectTransform _button;
     private void Start()
     {
-        EndPanel("онаедю!!");
+        //EndPanel("онаедю!!");
     }
     public void EndPanel(string title)
     {
