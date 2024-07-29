@@ -1,5 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
+using YG;
+using UnityEngine.SceneManagement;
 
 public class SettingsController : MonoBehaviour
 {
@@ -7,23 +9,52 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private Slider _soundSlider;
     [SerializeField] private GameObject _settings;
 
-    private float _musicValue = 1;
-    private float _soundValue = 1;
+    public float musicValue = 1;
+    public float soundValue = 1;
+
+    private void OnEnable()
+    {
+        YandexGame.GetDataEvent += GetLoad;
+    }
+
+    private void OnDisable()
+    {
+        YandexGame.GetDataEvent -= GetLoad;
+    }
+
+    public void GetLoad()
+    {
+        musicValue = YandexGame.savesData.musicValue;
+        soundValue = YandexGame.savesData.soundValue;
+        _musicSlider.value = musicValue;
+        _soundSlider.value = soundValue;
+    }
+
+    public void MySave()
+    {
+        YandexGame.savesData.musicValue = musicValue;
+        YandexGame.savesData.soundValue = soundValue;
+
+        YandexGame.SaveProgress();
+    }
 
     private void Start()
     {
-        _musicSlider.value = _musicValue;
-        _soundSlider.value = _soundValue;
+        if (YandexGame.SDKEnabled == true)
+            GetLoad();
+        _musicSlider.value = musicValue;
+        _soundSlider.value = soundValue;
     }
 
     public void UpdateMusic()
     {
-        _musicValue = _musicSlider.value;
+        musicValue = _musicSlider.value;
+        
     }
 
     public void UpdateSound()
     {
-        _soundValue = _soundSlider.value;
+        soundValue = _soundSlider.value;
     }
 
 
@@ -35,10 +66,11 @@ public class SettingsController : MonoBehaviour
     public void CloseSettings()
     {
         _settings.SetActive(false);
+        MySave();
     }
 
     public void LeftTheGame()
     {
-        //scene
+        SceneManager.LoadScene(0);
     }
 }
