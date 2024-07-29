@@ -9,6 +9,9 @@ using YG;
 public class MenuUIController : MonoBehaviour
 {
     [SerializeField] private GameObject _main;
+    [SerializeField] private GameObject _gamePanel;
+    [SerializeField] private GameObject _game1;
+    [SerializeField] private GameObject _game2;
     [SerializeField] private GameObject _settings;
     [SerializeField] private TextMeshProUGUI _coinsUI;
     [SerializeField] private TMP_InputField _nickname;
@@ -57,9 +60,19 @@ public class MenuUIController : MonoBehaviour
     public void MySave()
     {
         YandexGame.savesData.coins = coins;
-        YandexGame.savesData.nickName = _nickname.text;
-        YandexGame.savesData.daylyEnded = _daylyEnd;
 
+        YandexGame.SaveProgress();
+    }
+
+    public void SaveNick()
+    {
+        YandexGame.savesData.nickName = _nickname.text;
+        YandexGame.SaveProgress();
+    }
+
+    public void SaveDay()
+    {
+        YandexGame.savesData.daylyEnded = _daylyEnd;
         YandexGame.SaveProgress();
     }
 
@@ -69,9 +82,21 @@ public class MenuUIController : MonoBehaviour
             GetLoad();
     }
 
+    public void OpenGamePanel()
+    {
+        _game1.transform.localScale = Vector3.zero;
+        _game2.transform.localScale = Vector3.zero;
+        _gamePanel.transform.localScale = Vector3.one - Vector3.right;
+
+        _gamePanel.SetActive(true);
+        DOTween.Sequence()
+            .Append(_gamePanel.transform.DOScale(Vector3.one, 0.5f))
+            .Append(_game1.transform.DOScale(Vector3.one * 0.6f, 0.5f))
+            .Append(_game2.transform.DOScale(Vector3.one * 0.6f, 0.5f));
+    }
+
     public void UpdateDalyTimer()
     {
-        print(_daylyEnd);
         if (_daylyEnd == "")
         {
             _dayly.text = "забрать";
@@ -92,11 +117,10 @@ public class MenuUIController : MonoBehaviour
 
     public void CollectDayly()
     {
-        //Reward
         _daylyEnd = (DateTime.Now + new TimeSpan(1, 0, 0)).ToString("F");
         _daylyButton.interactable = false;
         _remain = DateTime.Parse(_daylyEnd) - DateTime.Now;
-        MySave();
+        SaveDay();
         StartCoroutine(Counter());
     }
 

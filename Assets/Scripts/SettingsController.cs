@@ -42,14 +42,11 @@ public class SettingsController : MonoBehaviour
     {
         if (YandexGame.SDKEnabled == true)
             GetLoad();
-        _musicSlider.value = musicValue;
-        _soundSlider.value = soundValue;
     }
 
     public void UpdateMusic()
     {
         musicValue = _musicSlider.value;
-        
     }
 
     public void UpdateSound()
