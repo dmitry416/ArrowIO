@@ -76,11 +76,12 @@ public class MenuModelController : MonoBehaviour
             _ui.coins -= 1000;
             _ui.curSkin = _curModel;
             _ui.curStyle = 0;
-            
+            _ui.openSkins[_ui.curSkin]++;
+            _ui.MySave();
         }
         else
             return;
-        _ui.MySave();
+        _ui.SkinSave();
         _button.GetComponent<Image>().color = Color.gray;
         _button.GetComponentInChildren<TextMeshProUGUI>().text = "¬€¡–¿ÕŒ";
         _buttonIcon.sprite = _selected;

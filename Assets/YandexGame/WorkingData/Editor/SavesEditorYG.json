@@ -1,26 +1,26 @@
 {
-  "idSave": 295,
+  "idSave": 385,
   "isFirstSession": false,
   "language": "en",
   "promptDone": false,
-  "coins": 2550,
+  "coins": 1100,
   "openSkins": [
     -1,
     -1,
     -1,
     -1,
-    0,
-    -1,
+    4,
+    11,
     -1,
     -1,
     -1,
     -1
   ],
-  "selectedSkin": 4,
+  "selectedSkin": 5,
   "selectedStyle": 0,
-  "rating": 0,
+  "rating": 43,
   "musicValue": 0.7965567,
   "soundValue": 0.5740402,
   "daylyEnded": "31 июля 2024 г. 3:20:28",
-  "nickName": "123"
+  "nickName": "1234"
 }

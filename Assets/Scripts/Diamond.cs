@@ -41,7 +41,13 @@ public class Diamond : MonoBehaviour
         foreach (Tween t in _animTweens)
             t.Kill();
         _animTweens = new Tween[2];
-        _animTweens[0] = transform.DORotate(new Vector3(-90, 180, 0), 1).SetLoops(-1);
+        _animTweens[0] = transform.DORotate(new Vector3(-90, 180, 0), 1).SetLoops(-1).SetEase(Ease.Linear);
         _animTweens[1] = transform.DOPunchPosition(Vector3.up * 0.3f, 1, 1, 1).SetLoops(-1);
+    }
+
+    private void OnDisable()
+    {
+        foreach (Tween t in _animTweens)
+            t.Kill();
     }
 }

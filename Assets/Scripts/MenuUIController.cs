@@ -91,6 +91,14 @@ public class MenuUIController : MonoBehaviour
         YandexGame.SaveProgress();
     }
 
+    public void SkinSave()
+    {
+        YandexGame.savesData.openSkins = openSkins;
+        YandexGame.savesData.selectedSkin = curSkin;
+        YandexGame.savesData.selectedStyle = curStyle;
+        YandexGame.SaveProgress();
+    }
+
     public void SaveNick()
     {
         YandexGame.savesData.nickName = _nickname.text;

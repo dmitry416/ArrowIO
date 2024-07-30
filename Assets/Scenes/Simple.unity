@@ -2289,7 +2289,7 @@ MonoBehaviour:
   _leftDownCorner: {fileID: 988107250}
   _rightUpCorner: {fileID: 1994467694}
   _gameManager: {fileID: 1791826985}
-  _enemyCount: 1
+  _enemyCount: 3
 --- !u!4 &451183979
 Transform:
   m_ObjectHideFlags: 0
@@ -3067,6 +3067,8 @@ MonoBehaviour:
   _musicSlider: {fileID: 200441676}
   _soundSlider: {fileID: 1520769254}
   _settings: {fileID: 815739929}
+  musicValue: 1
+  soundValue: 1
 --- !u!1001 &564036805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8216,11 +8218,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cvc: {fileID: 844586753}
   _enemySpawner: {fileID: 451183978}
+  _gameUI: {fileID: 562722511}
   _playerPrefab: {fileID: 767419475272401555, guid: b3bab9e9aba51e34887ff7a72989bf6a, type: 3}
   _enemyPrefab: {fileID: 8851977629591237351, guid: a8a336f2f3bc010479fce5f5330aba93, type: 3}
   _playerHero: 3
   _playerSkin: 0
-  _playerWeapon: 3
+  _playerWeapon: 1
 --- !u!4 &1791826986
 Transform:
   m_ObjectHideFlags: 0
@@ -9901,6 +9904,7 @@ GameObject:
   - component: {fileID: 382842675130150539}
   - component: {fileID: 382842675130150537}
   - component: {fileID: 382842675130150536}
+  - component: {fileID: 382842675130150540}
   m_Layer: 0
   m_Name: Button01_lg
   m_TagString: Untagged
@@ -9928,6 +9932,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 113}
   m_SizeDelta: {x: 386.67, y: 162}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &382842675130150540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382842675130150538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 382842675130150536}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 562722512}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: LeftTheGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &382842675236094325
 GameObject:
   m_ObjectHideFlags: 0

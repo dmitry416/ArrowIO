@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using YG;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour 
@@ -19,9 +20,11 @@ public class PlayerController : MonoBehaviour
         _hand = GetComponentInChildren<Hand>();
         _skillCont = FindObjectOfType<SkillGroupController>();
         _charCont.onCoinChanged += _playerUI.UpdateUI;
-        _charCont.SetNick("Тест");
+        _charCont.SetNick(YandexGame.savesData.nickName);
         _skillCont.onSelect += SelectSkill;
         _charCont.onLVLUp += LVLUp;
+        if (!YandexGame.EnvironmentData.isDesktop)
+            _playerUI.SetMobileUI();
     }
 
     private void OnEnable()
