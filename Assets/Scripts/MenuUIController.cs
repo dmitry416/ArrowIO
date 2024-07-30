@@ -3,15 +3,23 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
 public class MenuUIController : MonoBehaviour
 {
     [SerializeField] private GameObject _main;
+    [Space]
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private GameObject _game1;
     [SerializeField] private GameObject _game2;
+    [Space]
+    [SerializeField] private GameObject _donatPanel;
+    [SerializeField] private GameObject _donat1;
+    [SerializeField] private GameObject _donat2;
+    [SerializeField] private GameObject _donat3;
+    [Space]
     [SerializeField] private GameObject _settings;
     [SerializeField] private TextMeshProUGUI _coinsUI;
     [SerializeField] private TMP_InputField _nickname;
@@ -36,11 +44,30 @@ public class MenuUIController : MonoBehaviour
     private void OnEnable()
     {
         YandexGame.GetDataEvent += GetLoad;
+        YandexGame.PurchaseSuccessEvent += SuccessPurchased;
     }
 
     private void OnDisable()
     {
         YandexGame.GetDataEvent -= GetLoad;
+        YandexGame.PurchaseSuccessEvent -= SuccessPurchased;
+    }
+
+    void SuccessPurchased(string id)
+    {
+        print(id);
+        switch (id)
+        {
+            case "100":
+                coins += 100;
+                break;
+            case "500":
+                coins += 500;
+                break;
+            case "1000":
+                coins += 1000;
+                break;
+        }
     }
 
     public void GetLoad()
@@ -95,6 +122,21 @@ public class MenuUIController : MonoBehaviour
             .Append(_game2.transform.DOScale(Vector3.one * 0.6f, 0.5f));
     }
 
+    public void OpenDonatPanel()
+    {
+        _donat1.transform.localScale = Vector3.zero;
+        _donat2.transform.localScale = Vector3.zero;
+        _donat3.transform.localScale = Vector3.zero;
+        _donatPanel.transform.localScale = Vector3.one - Vector3.right;
+
+        _donatPanel.SetActive(true);
+        DOTween.Sequence()
+            .Append(_donatPanel.transform.DOScale(Vector3.one, 0.5f))
+            .Append(_donat1.transform.DOScale(Vector3.one * 1.5f, 0.5f))
+            .Append(_donat2.transform.DOScale(Vector3.one * 1.5f, 0.5f))
+            .Append(_donat3.transform.DOScale(Vector3.one * 1.5f, 0.5f));
+    }
+
     public void UpdateDalyTimer()
     {
         if (_daylyEnd == "")
@@ -111,8 +153,23 @@ public class MenuUIController : MonoBehaviour
 
     public void UpdateCoins()
     {
-        _coinsUI.text = coins.ToString();
+        if (_coinsUI.text == "")
+            _coinsUI.text = coins.ToString();
+        else
+            StartCoroutine(CoinRoll());
         MySave();
+    }
+
+    private IEnumerator CoinRoll()
+    {
+        int curCoin = Convert.ToInt32(_coinsUI.text);
+        int step = curCoin < coins ? 1 : -1;
+        while (curCoin != coins)
+        {
+            _coinsUI.text = curCoin.ToString();
+            curCoin += step;
+            yield return null;
+        }
     }
 
     public void CollectDayly()
@@ -138,6 +195,7 @@ public class MenuUIController : MonoBehaviour
 
     private IEnumerator Counter()
     {
+        UpdateOnlyTimer();
         TimeSpan second = new TimeSpan(0, 0, 1);
         while (_remain.TotalSeconds > 0)
         {
@@ -158,5 +216,10 @@ public class MenuUIController : MonoBehaviour
         {
             _dayly.text = _remain.Minutes.ToString() + ":" + _remain.Seconds.ToString();
         }
+    }
+
+    public void LoadScene(int id)
+    {
+        SceneManager.LoadScene(id);
     }
 }
