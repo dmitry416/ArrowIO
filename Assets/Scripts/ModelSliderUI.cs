@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,13 @@ public class ModelSliderUI : MonoBehaviour
     [SerializeField] private Slider _slider;
 
     public int selectedID = 0;
+    public Action<int> onSelect;
 
     public void SetSlider(int value)
     {
         foreach (Image checker in _checkers)
         {
+            print(1);
             checker.sprite = _disable;
             checker.GetComponent<Button>().interactable = false;
         }
@@ -28,7 +31,14 @@ public class ModelSliderUI : MonoBehaviour
 
     public void SetSelected(int id)
     {
-        _checkers[id].sprite = _enable;
+        if (_checkers[selectedID].sprite == _selected)
+        {
+            _checkers[selectedID].sprite = _enable;
+            _checkers[selectedID].GetComponent<Button>().interactable = true;
+        }
+        _checkers[id].sprite = _selected;
+        _checkers[id].GetComponent<Button>().interactable = false;
         selectedID = id;
+        onSelect?.Invoke(selectedID);
     }
 }

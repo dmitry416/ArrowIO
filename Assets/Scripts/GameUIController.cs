@@ -4,7 +4,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements.Experimental;
 using YG;
 
 public class GameUIController : MonoBehaviour
@@ -17,6 +16,8 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private RectTransform _chest;
     [SerializeField] private RectTransform _button;
     [SerializeField] private RectTransform _buttonAd;
+    [SerializeField] private AudioSource _gameAudio;
+    [SerializeField] private AudioManager _audioManager;
     private int _totalSeconds = 180;
     private int lvl;
     private int collectedCoins;
@@ -44,6 +45,8 @@ public class GameUIController : MonoBehaviour
 
     public void EndPanel(string title)
     {
+        _gameAudio.Stop();
+        _audioManager.PlayEnd();
         PlusToSkin();
         _title.text = title;
         lvl = FindObjectOfType<PlayerController>().GetComponent<CharacterController>()._lvl;

@@ -2,59 +2,47 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuModelController : MonoBehaviour
+public class WeaponModelUI : MonoBehaviour
 {
-    public GameObject[] _characterModels;
+    public GameObject[] _weaponModels;
     [SerializeField] private MenuUIController _ui;
-    [SerializeField] private ModelSliderUI _modelSlider;
     [SerializeField] private GameObject _button;
     [SerializeField] private Image _buttonIcon;
     [SerializeField] private Sprite _coin;
     [SerializeField] private Sprite _select;
     [SerializeField] private Sprite _selected;
     private int _curModel;
-    private GameObject model;
 
     public void SetActiveModel()
     {
-        _curModel = _ui.curSkin;
+        _curModel = _ui.curWeapon;
         SetModel();
     }
 
     public void SetNextModel()
     {
-        _curModel = (_curModel + 1) % 10;
+        _curModel = (_curModel + 1) % 6;
         SetModel();
     }
 
     public void SetPreviousModel()
     {
-        _curModel = (10 + _curModel - 1) % 10;
+        _curModel = (6 + _curModel - 1) % 6;
         SetModel();
     }
 
     public void SetModel()
     {
         if (transform.childCount != 0)
-            Destroy(model);
-        model = Instantiate(_characterModels[_curModel], transform);
-        model.GetComponent<Animator>().SetTrigger("win");
-        /*if (_curModel == _ui.curSkin)
-            model.GetComponent<CharacterModel>().ChangeSkin(_ui.curStyle);
-        else
-            model.GetComponent<CharacterModel>().ChangeSkin(_ui.openSkins[_curModel] == -1 ? 0 : _ui.openSkins[_curModel] / 10);*/
-        _modelSlider.SetSlider(Mathf.Min(_ui.openSkins[_curModel], 40));
-        if (_curModel == _ui.curSkin)
-            _modelSlider.SetSelected(_ui.curStyle);
-        else
-            _modelSlider.SetSelected(_ui.openSkins[_curModel] == -1 ? 0 : _ui.openSkins[_curModel] / 10);
-        if (_ui.openSkins[_curModel] == -1)
+            Destroy(transform.GetChild(0).gameObject);
+        Instantiate(_weaponModels[_curModel], transform);
+        if (!_ui.openWeapons[_curModel])
         {
             _button.GetComponent<Image>().color = Color.green;
             _button.GetComponentInChildren<TextMeshProUGUI>().text = "1000";
             _buttonIcon.sprite = _coin;
         }
-        else if (_curModel == _ui.curSkin)
+        else if (_curModel == _ui.curWeapon)
         {
             _button.GetComponent<Image>().color = Color.gray;
             _button.GetComponentInChildren<TextMeshProUGUI>().text = "¬€¡–¿ÕŒ";
@@ -72,38 +60,20 @@ public class MenuModelController : MonoBehaviour
     {
         if (_button.GetComponent<Image>().color == Color.yellow)
         {
-            _ui.curSkin = _curModel;
-            _ui.curStyle = _modelSlider.selectedID;
+            _ui.curWeapon = _curModel;
         }
         else if (_button.GetComponent<Image>().color == Color.green && _ui.coins >= 1000)
         {
             _ui.coins -= 1000;
-            _ui.curSkin = _curModel;
-            _ui.curStyle = 0;
-            _ui.openSkins[_ui.curSkin]++;
+            _ui.curWeapon = _curModel;
+            _ui.openWeapons[_curModel] = true;
             _ui.MySave();
         }
         else
             return;
-        _ui.SkinSave();
+        _ui.SaveWeapon();
         _button.GetComponent<Image>().color = Color.gray;
         _button.GetComponentInChildren<TextMeshProUGUI>().text = "¬€¡–¿ÕŒ";
         _buttonIcon.sprite = _selected;
-    }
-
-    private void Select(int id)
-    {
-        model.GetComponent<CharacterModel>().ChangeSkin(id);
-        if (_curModel == _ui.curSkin)
-        {
-            _ui.curStyle = id;
-            _ui.SkinSave();
-        }
-    }
-
-    private void Awake()
-    {
-        _ui.canGetData += SetActiveModel;
-        _modelSlider.onSelect += Select;
     }
 }

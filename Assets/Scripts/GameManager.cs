@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         _playerHero = YandexGame.savesData.selectedSkin;
         _playerSkin = YandexGame.savesData.selectedStyle;
+        _playerWeapon = YandexGame.savesData.selectedWeapon;
 
         _heroPrefabs = FindObjectOfType<HeroPrefabs>();
         _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();

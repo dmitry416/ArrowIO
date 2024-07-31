@@ -34,7 +34,9 @@ public class MenuUIController : MonoBehaviour
     public Action canGetData;
     [HideInInspector] public int curSkin;
     [HideInInspector] public int curStyle;
+    [HideInInspector] public int curWeapon;
     [HideInInspector] public int[] openSkins;
+    [HideInInspector] public bool[] openWeapons;
     public int coins 
     {
         get { return _coins; }
@@ -73,8 +75,10 @@ public class MenuUIController : MonoBehaviour
     public void GetLoad()
     {
         openSkins = YandexGame.savesData.openSkins;
+        openWeapons = YandexGame.savesData.openWeapons;
         curSkin = YandexGame.savesData.selectedSkin;
         curStyle = YandexGame.savesData.selectedStyle;
+        curWeapon = YandexGame.savesData.selectedWeapon;
         coins = YandexGame.savesData.coins;
         _nickname.text = YandexGame.savesData.nickName;
         _rating.text = YandexGame.savesData.rating.ToString();
@@ -88,6 +92,13 @@ public class MenuUIController : MonoBehaviour
     {
         YandexGame.savesData.coins = coins;
 
+        YandexGame.SaveProgress();
+    }
+
+    public void SaveWeapon()
+    {
+        YandexGame.savesData.openWeapons = openWeapons;
+        YandexGame.savesData.selectedWeapon = curWeapon;
         YandexGame.SaveProgress();
     }
 
@@ -222,7 +233,7 @@ public class MenuUIController : MonoBehaviour
         }
         else
         {
-            _dayly.text = _remain.Minutes.ToString() + ":" + _remain.Seconds.ToString();
+            _dayly.text = $"{_remain.Minutes}:{_remain.Seconds:00}";
         }
     }
 

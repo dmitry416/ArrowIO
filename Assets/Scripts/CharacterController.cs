@@ -1,10 +1,9 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.EventSystems.EventTrigger;
+using YG;
 
-[RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController))]
+[RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController), typeof(AudioSource))]
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] private Hand _hand;
@@ -25,15 +24,19 @@ public class CharacterController : MonoBehaviour
     public Transform _target;
     public string _nick;
     private LeaderboardUI _leaderboard;
+    [HideInInspector] public AudioSource _audioSource;
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();
         _leaderboard = FindObjectOfType<LeaderboardUI>();
         _rb = GetComponent<Rigidbody>();
         _animController = GetComponent<CharacterAnimationController>();
         _ui = GetComponent<CharacterUIController>();
         _curHealth = _health;
+        FindObjectOfType<SettingsController>().onUpdate += UpdateVolume;
+        UpdateVolume();
     }
 
     private void Start()
@@ -45,6 +48,12 @@ public class CharacterController : MonoBehaviour
     private void Update()
     {
         FindClosestEnemy();
+    }
+
+    private void UpdateVolume()
+    {
+        if (_audioSource != null) 
+            _audioSource.volume = YandexGame.savesData.soundValue;
     }
 
     private void FindClosestEnemy()

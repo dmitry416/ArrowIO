@@ -1,26 +1,35 @@
 {
-  "idSave": 399,
+  "idSave": 593,
   "isFirstSession": false,
   "language": "en",
   "promptDone": false,
-  "coins": 2250,
+  "coins": 1592,
   "openSkins": [
     -1,
     -1,
     -1,
     -1,
     4,
-    15,
+    19,
     -1,
     -1,
     -1,
     -1
   ],
+  "openWeapons": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+  ],
   "selectedSkin": 5,
-  "selectedStyle": 0,
+  "selectedStyle": 1,
+  "selectedWeapon": 1,
   "rating": 138,
-  "musicValue": 0.7965567,
-  "soundValue": 0.5740402,
-  "daylyEnded": "31 июля 2024 г. 3:20:28",
+  "musicValue": 0.147463709,
+  "soundValue": 0.388475329,
+  "daylyEnded": "1 августа 2024 г. 3:35:31",
   "nickName": "1234"
 }

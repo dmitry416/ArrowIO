@@ -66,7 +66,7 @@ public class Hand : MonoBehaviour
     {
         if (_curTime != 0)
             return;
-
+        parent._audioSource.Play();
         foreach (Weapon w in _weapons)
             w.Go();
 

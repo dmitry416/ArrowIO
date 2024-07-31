@@ -43,6 +43,7 @@ public class SkillGroupController : MonoBehaviour
     [SerializeField] protected Sprite _walkSpeed;
     [SerializeField] protected Sprite _cd;
     [SerializeField] protected Sprite _health;
+    private AudioManager _audioManager;
     private int _activations = 0;
     private bool _isActive = false;
     public Action<Skills> onSelect; 
@@ -64,10 +65,12 @@ public class SkillGroupController : MonoBehaviour
         _skillButtonsIcons = new Image[_skillButtons.Length];
         for (int i = 0; i < _skillButtons.Length; ++i)
             _skillButtonsIcons[i] = _skillButtons[i].GetComponentsInChildren<Image>()[1];
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void Activate()
     {
+        _audioManager.PlayLVLUp();
         _activations++;
         if (_isActive)
             return;
@@ -96,6 +99,7 @@ public class SkillGroupController : MonoBehaviour
 
     public void OnClickButton(int id)
     {
+        _audioManager.PlayButton();
         DOTween.Sequence()
             .Append(_skillButtons[id].GetComponent<RectTransform>().DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 0.2f))
             .Append(_skillButtons[2].GetComponent<RectTransform>().DOScale(Vector3.zero, 0.2f))

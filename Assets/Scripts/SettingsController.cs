@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using YG;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SettingsController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SettingsController : MonoBehaviour
 
     public float musicValue = 1;
     public float soundValue = 1;
+    public Action onUpdate;
 
     private void OnEnable()
     {
@@ -36,6 +38,7 @@ public class SettingsController : MonoBehaviour
         YandexGame.savesData.soundValue = soundValue;
 
         YandexGame.SaveProgress();
+        onUpdate?.Invoke();
     }
 
     private void Start()
