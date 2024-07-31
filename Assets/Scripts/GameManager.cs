@@ -35,11 +35,22 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
             _player.onDeath += () => _gameUI.EndPanel("ÎÒËÈ×ÍÎ");
+        else
+        {
+            _gameUI.SetTimer();
+            _gameUI.onTimerEnd += () => _gameUI.EndPanel("ÂÐÅÌß ÊÎÍ×ÈËÎÑÜ");
+            _gameUI.onTimerEnd += StopCharacters;
+        }
 
         for (int i = 0; i < _enemySpawner._enemyCount; ++i)
             SpawnEnemy();
     }
 
+    private void StopCharacters()
+    {
+        foreach (CharacterController character in FindObjectsOfType<CharacterController>())
+            character.Stop();
+    }
     public void SpawnEnemy()
     {
         Vector3 position = _enemySpawner.GetPos();
@@ -47,7 +58,7 @@ public class GameManager : MonoBehaviour
         _enemy.SetHero(_heroPrefabs.GetHero(Random.Range(0, _heroPrefabs.GetHeroesLength())));
         _enemy.SetSkin(Random.Range(0, 5));
         _enemy.SetWeapon(Random.Range(0, _weaponPrefabs.GetWeaponsLength()));
-        _enemy.GetComponent<EnemyController>().SetLVL(_player._lvl + 1);
+        _enemy.GetComponent<EnemyController>().SetLVL(Mathf.Min(1, _player._lvl + Random.Range(-1, 2)));
         _enemy.onDeath += SpawnEnemy;
     }
 

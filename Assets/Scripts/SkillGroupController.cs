@@ -1,5 +1,7 @@
 using DG.Tweening;
 using System;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,16 +14,19 @@ public struct Skill
 {
     public Skills name;
     public Sprite sprite;
+    public string description;
 
-    public Skill(Skills name, Sprite sprite)
+    public Skill(Skills name, Sprite sprite, string description)
     {
         this.name = name;
         this.sprite = sprite;
+        this.description = description;
     }
 }
 
 public class SkillGroupController : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _description;
     [SerializeField] private GameObject[] _skillButtons;
     private Image[] _skillButtonsIcons;
     protected Skill[] _skills;
@@ -45,17 +50,17 @@ public class SkillGroupController : MonoBehaviour
     private void Awake()
     {
         _skills = new Skill[11];
-        _skills[0] = new Skill(Skills.Double, _double);
-        _skills[1] = new Skill(Skills.FrontSide, _frontSide);
-        _skills[2] = new Skill(Skills.Side, _side);
-        _skills[3] = new Skill(Skills.Back, _back);
-        _skills[4] = new Skill(Skills.Damage, _damage);
-        _skills[5] = new Skill(Skills.CritDamage, _critDamage);
-        _skills[6] = new Skill(Skills.WeaponSpeed, _weaponSpeed);
-        _skills[7] = new Skill(Skills.Distance, _distance);
-        _skills[8] = new Skill(Skills.Walkspeed, _walkSpeed);
-        _skills[9] = new Skill(Skills.CD, _cd);
-        _skills[10] = new Skill(Skills.Health, _health);
+        _skills[0] = new Skill(Skills.Double, _double, "Два снаряда вперед");
+        _skills[1] = new Skill(Skills.FrontSide, _frontSide, "Два снаряда по бокам");
+        _skills[2] = new Skill(Skills.Side, _side, "Два снаряда по краям");
+        _skills[3] = new Skill(Skills.Back, _back, "Один снаряд назад");
+        _skills[4] = new Skill(Skills.Damage, _damage, "Увеличен урон");
+        _skills[5] = new Skill(Skills.CritDamage, _critDamage, "Увеличен шанс критического урона");
+        _skills[6] = new Skill(Skills.WeaponSpeed, _weaponSpeed, "Увеличена скорость снаряда");
+        _skills[7] = new Skill(Skills.Distance, _distance, "Увеличена дальность снаряда");
+        _skills[8] = new Skill(Skills.Walkspeed, _walkSpeed, "Увеличена скорость ходьбы");
+        _skills[9] = new Skill(Skills.CD, _cd, "Уменьшено время перезарядки");
+        _skills[10] = new Skill(Skills.Health, _health, "Увеличен запас здоровья");
         _skillButtonsIcons = new Image[_skillButtons.Length];
         for (int i = 0; i < _skillButtons.Length; ++i)
             _skillButtonsIcons[i] = _skillButtons[i].GetComponentsInChildren<Image>()[1];
@@ -96,6 +101,7 @@ public class SkillGroupController : MonoBehaviour
             .Append(_skillButtons[2].GetComponent<RectTransform>().DOScale(Vector3.zero, 0.2f))
             .Append(_skillButtons[1].GetComponent<RectTransform>().DOScale(Vector3.zero, 0.2f))
             .Append(_skillButtons[0].GetComponent<RectTransform>().DOScale(Vector3.zero, 0.2f));
+        ShowDescription(_activeSkills[id].description);
         onSelect?.Invoke(_activeSkills[id].name);
         _isActive = false;
         _activations--;
@@ -104,5 +110,16 @@ public class SkillGroupController : MonoBehaviour
             _activations--;
             Activate();
         }
+    }
+
+    private void ShowDescription(string disc)
+    {
+        _description.text = disc;
+        Invoke("HideDescription", 2);
+    }
+
+    private void HideDescription()
+    {
+        _description.text = "";
     }
 }

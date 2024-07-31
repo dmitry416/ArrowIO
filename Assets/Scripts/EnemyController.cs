@@ -324,6 +324,8 @@ public class EnemyController : MonoBehaviour
 
     public void SetLVL(int lvl)
     {
+        _charCont._lvl = lvl;
+        _charCont.onLVLUp?.Invoke();
         for (int i = 0; i < lvl; ++i)
         {
             _esg.SelectSkill(_esg.RandomSkill());

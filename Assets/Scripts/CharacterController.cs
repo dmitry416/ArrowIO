@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.EventSystems.EventTrigger;
 
 [RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController))]
@@ -123,6 +124,16 @@ public class CharacterController : MonoBehaviour
         CheckCoins();
     }
 
+    public void Stop()
+    {
+        _animController.Fail();
+        isDead = true;
+        _hand.gameObject.SetActive(false);
+        _rb.isKinematic = true;
+        GetComponent<Collider>().enabled = false;
+        onDeath?.Invoke();
+    }
+
     private void Death()
     {
         _animController.Death();
@@ -131,7 +142,22 @@ public class CharacterController : MonoBehaviour
         _rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
         onDeath?.Invoke();
-        Destroy(gameObject, 5);
+        if (TryGetComponent(out EnemyController e) || SceneManager.GetActiveScene().buildIndex == 1)
+            Destroy(gameObject, 5);
+        else
+            Invoke("Respawn", 5);
+    }
+
+    private void Respawn()
+    {
+        _animController.Respawn();
+        isDead = false;
+        _hand.gameObject.SetActive(true);
+        _hand.PrepareWeapon();
+        _rb.isKinematic = false;
+        GetComponent<Collider>().enabled = true;
+        _curHealth = _health;
+        _ui.SetHP(_curHealth / _health);
     }
 
     public void SetNick(string nick)

@@ -25,6 +25,9 @@ public class Hand : MonoBehaviour
 
     public void PrepareWeapon()
     {
+        _curTime = 0;
+        for (int i = 0; i < transform.childCount; i++)
+            Destroy(transform.GetChild(i).gameObject);
         _weapons.Clear();
         if (isDouble)
         {
@@ -78,7 +81,6 @@ public class Hand : MonoBehaviour
             yield return null;
             _curTime -= Time.deltaTime;
         }
-        _curTime = 0;
         PrepareWeapon();
     }
 

@@ -42,6 +42,12 @@ public class CharacterAnimationController : MonoBehaviour
         _animator.SetTrigger(death);
     }
 
+    public void Respawn()
+    {
+        _isDead = false;
+        Hit();
+    }
+
     public void Hit() 
     {
         if (_isDead)
