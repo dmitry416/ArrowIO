@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Cairo-Black Atlas Material
   m_Shader: {fileID: 4800000, guid: 48bb5f55d8670e349b6e614913f9d910, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -17,6 +19,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -118,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Cairo-Num_SemiTransparent SDF
   m_EditorClassIdentifier: 
-  hashCode: 1600230780
+  hashCode: 1109387831
   material: {fileID: -2477718156083254480}
-  materialHashCode: 1860311388
+  materialHashCode: -340238153
   m_Version: 1.1.0
   m_SourceFontFileGUID: 22311bfb9f13b412d882972747f44ae1
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 22311bfb9f13b412d882972747f44ae1, type: 3}
@@ -133,7 +136,7 @@ MonoBehaviour:
     m_PointSize: 315
     m_Scale: 1
     m_UnitsPerEM: 1000
-    m_LineHeight: 300
+    m_LineHeight: 590.31
     m_AscentLine: 410.445
     m_CapLine: 214
     m_MeanLine: 159
@@ -848,8 +851,8 @@ MonoBehaviour:
     packingMode: 0
     atlasWidth: 1024
     atlasHeight: 1024
-    characterSetSelectionMode: 7
-    characterSequence: 1234567890-+~!@#$%&*=<>?
+    characterSetSelectionMode: 6
+    characterSequence: 21,23-26,2A-2B,2D,30-39,3C-40,7E,0400-04FF
     referencedFontAssetGUID: 0bf5cd5dedeaa4089ae14e5170ee4568
     referencedTextAssetGUID: 
     fontStyle: 0
@@ -890,7 +893,7 @@ Texture2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cairo-Num SDF Atlas
+  m_Name: Cairo-Num_SemiTransparent SDF Atlas
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -906,7 +909,8 @@ Texture2D:
   m_MipCount: 1
   m_IsReadable: 0
   m_IsPreProcessed: 0
-  m_IgnoreMasterTextureLimit: 0
+  m_IgnoreMipmapLimit: 0
+  m_MipmapLimitGroupName: 
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_VTOnly: 0

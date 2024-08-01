@@ -160,7 +160,7 @@ public class MenuUIController : MonoBehaviour
     {
         if (_daylyEnd == "")
         {
-            _dayly.text = "забрать";
+            _dayly.text = "Забрать";
             _daylyButton.interactable = true;
         }
         else
@@ -228,7 +228,7 @@ public class MenuUIController : MonoBehaviour
     {
         if (_remain.TotalSeconds <= 0)
         {
-            _dayly.text = "забрать";
+            _dayly.text = "Забрать";
             _daylyButton.interactable = true;
         }
         else

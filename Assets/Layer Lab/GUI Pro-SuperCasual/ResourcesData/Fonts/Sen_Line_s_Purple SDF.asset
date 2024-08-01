@@ -6,7 +6,7 @@ Texture2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sen-ExtraBold SDF Atlas
+  m_Name: Sen_Line_s_Purple SDF Atlas
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -22,7 +22,8 @@ Texture2D:
   m_MipCount: 1
   m_IsReadable: 0
   m_IsPreProcessed: 0
-  m_IgnoreMasterTextureLimit: 0
+  m_IgnoreMipmapLimit: 0
+  m_MipmapLimitGroupName: 
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_VTOnly: 0
@@ -5569,9 +5570,9 @@ MonoBehaviour:
     packingMode: 0
     atlasWidth: 1024
     atlasHeight: 1024
-    characterSetSelectionMode: 1
-    characterSequence: 32 - 126, 160 - 255, 8192 - 8303, 8364, 8482, 9633
-    referencedFontAssetGUID: 1fa955f54f6ec41b787bbcc850b6ac2b
+    characterSetSelectionMode: 6
+    characterSequence: 20-7E,A0-FF,2013-2014,2018-201A,201C-201E,2020-2022,2026,2039-203A,2044,20AC,2122,0400-04FF
+    referencedFontAssetGUID: 917b6f8b47e4249e2ae318d8182bd8d9
     referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0
@@ -5614,6 +5615,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Sen-ExtraBold Atlas Material
   m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - OUTLINE_ON
   - UNDERLAY_ON
@@ -5624,6 +5627,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:

@@ -17,7 +17,6 @@ public class ModelSliderUI : MonoBehaviour
     {
         foreach (Image checker in _checkers)
         {
-            print(1);
             checker.sprite = _disable;
             checker.GetComponent<Button>().interactable = false;
         }

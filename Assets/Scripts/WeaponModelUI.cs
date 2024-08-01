@@ -13,6 +13,12 @@ public class WeaponModelUI : MonoBehaviour
     [SerializeField] private Sprite _selected;
     private int _curModel;
 
+    public void Despawn()
+    {
+        if (transform.childCount != 0)
+            Destroy(transform.GetChild(0).gameObject);
+    }
+
     public void SetActiveModel()
     {
         _curModel = _ui.curWeapon;
@@ -33,8 +39,7 @@ public class WeaponModelUI : MonoBehaviour
 
     public void SetModel()
     {
-        if (transform.childCount != 0)
-            Destroy(transform.GetChild(0).gameObject);
+        Despawn();
         Instantiate(_weaponModels[_curModel], transform);
         if (!_ui.openWeapons[_curModel])
         {

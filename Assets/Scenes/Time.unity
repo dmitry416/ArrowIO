@@ -9412,7 +9412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 562722512}
         m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
         m_MethodName: LeftTheGame
         m_Mode: 1

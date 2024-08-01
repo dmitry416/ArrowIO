@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private WeaponPrefabs _weaponPrefabs;
     private CharacterController _player;
 
+    private bool _isGameStopped = false;
+
     private void Awake()
     {
         _playerHero = YandexGame.savesData.selectedSkin;
@@ -49,11 +51,14 @@ public class GameManager : MonoBehaviour
 
     private void StopCharacters()
     {
+        _isGameStopped = true;
         foreach (CharacterController character in FindObjectsOfType<CharacterController>())
             character.Stop();
     }
     public void SpawnEnemy()
     {
+        if (_isGameStopped)
+            return;
         Vector3 position = _enemySpawner.GetPos();
         CharacterController _enemy = Instantiate(_enemyPrefab, position, _enemyPrefab.transform.rotation).GetComponent<CharacterController>();
         _enemy.SetHero(_heroPrefabs.GetHero(Random.Range(0, _heroPrefabs.GetHeroesLength())));

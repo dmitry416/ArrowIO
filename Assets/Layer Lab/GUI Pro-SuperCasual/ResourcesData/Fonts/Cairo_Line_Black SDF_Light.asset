@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Cairo_Line_Black SDF_Light
   m_EditorClassIdentifier: 
-  hashCode: -62239774
+  hashCode: -1854273489
   material: {fileID: 8527393934874279224}
-  materialHashCode: -733734654
+  materialHashCode: -291285073
   m_Version: 1.1.0
   m_SourceFontFileGUID: 22311bfb9f13b412d882972747f44ae1
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 22311bfb9f13b412d882972747f44ae1, type: 3}
@@ -5561,9 +5561,9 @@ MonoBehaviour:
     packingMode: 0
     atlasWidth: 1024
     atlasHeight: 1024
-    characterSetSelectionMode: 1
-    characterSequence: 32 - 126, 160 - 255, 8192 - 8303, 8364, 8482, 9633
-    referencedFontAssetGUID: 7137805b022d44869b12d93cb388c588
+    characterSetSelectionMode: 6
+    characterSequence: 20-7E,A0-FF,2013-2014,2018-201A,201C-201E,2020-2022,2026,2030,2039-203A,2044,20AC,2122,0400-04FF
+    referencedFontAssetGUID: 2b3021157dc754275997b405382cb44b
     referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0
@@ -5603,7 +5603,7 @@ Texture2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cairo_Line_Black_s SDF Atlas
+  m_Name: Cairo_Line_Black SDF_Light Atlas
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -5619,7 +5619,8 @@ Texture2D:
   m_MipCount: 1
   m_IsReadable: 0
   m_IsPreProcessed: 0
-  m_IgnoreMasterTextureLimit: 0
+  m_IgnoreMipmapLimit: 0
+  m_MipmapLimitGroupName: 
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_VTOnly: 0
@@ -5653,6 +5654,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Cairo-Black Atlas Material
   m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - OUTLINE_ON
   - UNDERLAY_ON
@@ -5663,6 +5666,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
