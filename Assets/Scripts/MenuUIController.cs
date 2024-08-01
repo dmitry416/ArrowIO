@@ -1,6 +1,7 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +31,7 @@ public class MenuUIController : MonoBehaviour
     private string _daylyEnd = "";
     private TimeSpan _remain;
     private int _coins;
+    private Dictionary<string, string> _collectText = new Dictionary<string, string> { { "ru", "Получить" }, { "uz", "Oling" }, { "kk", "Алу" }, { "be", "Атрымаць" }, { "uk", "Одержавши" }, { "en", "Receive" }, { "tr", "Almak" }, { "es", "Obtener" }, { "de", "Bekommen" }, { "fr", "Recevoir" }, { "pt", "Obter" } };
 
     public Action canGetData;
     [HideInInspector] public int curSkin;
@@ -160,7 +162,7 @@ public class MenuUIController : MonoBehaviour
     {
         if (_daylyEnd == "")
         {
-            _dayly.text = "�������";
+            _dayly.text = _collectText[YandexGame.EnvironmentData.language];
             _daylyButton.interactable = true;
         }
         else
@@ -226,9 +228,9 @@ public class MenuUIController : MonoBehaviour
 
     private void UpdateOnlyTimer()
     {
-        if (_remain.TotalSeconds <= 0)
+        if (_remain.TotalSeconds <= 1)
         {
-            _dayly.text = "�������";
+            _dayly.text = _collectText[YandexGame.EnvironmentData.language];
             _daylyButton.interactable = true;
         }
         else

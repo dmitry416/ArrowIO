@@ -1,6 +1,7 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,10 @@ public class GameUIController : MonoBehaviour
     private int rating;
 
     public Action onTimerEnd;
-    
+
+    private Dictionary<string, string> _coinsText = new Dictionary<string, string> { { "ru", "монет" }, { "uz", "tangalar" }, { "kk", "монеталар" }, { "be", "манета" }, { "uk", "монета" }, { "en", "coins" }, { "tr", "paralar" }, { "es", "metálico" }, { "de", "Münzen" }, { "fr", "espèce" }, { "pt", "SELECIONAR" } };
+    private Dictionary<string, string> _ratingText = new Dictionary<string, string> { { "ru", "рейтинг" }, { "uz", "reyting" }, { "kk", "рейтинг" }, { "be", "рэйтынг" }, { "uk", "рейтинг" }, { "en", "rating" }, { "tr", "derecelendirme" }, { "es", "rating" }, { "de", "Bewertung" }, { "fr", "classement" }, { "pt", "classificação" } };
+
 
     public void SetTimer() 
     {
@@ -56,7 +60,7 @@ public class GameUIController : MonoBehaviour
         YandexGame.savesData.rating += rating;
         YandexGame.SaveProgress();
         YandexGame.NewLeaderboardScores("rating", YandexGame.savesData.rating);
-        _coinsEarned.text = $"+{collectedCoins} �����\n+{rating} �������";
+        _coinsEarned.text = $"+{collectedCoins} {_coinsText[YandexGame.EnvironmentData.language]}\n+{rating} {_ratingText[YandexGame.EnvironmentData.language]}";
         _bg.localScale = _bg.localScale - Vector3.right;
         _title.transform.localScale = Vector3.zero;
         _coinsEarned.transform.localScale = Vector3.zero;
@@ -83,7 +87,7 @@ public class GameUIController : MonoBehaviour
         YandexGame.savesData.rating += rating;
         YandexGame.SaveProgress();
         YandexGame.NewLeaderboardScores("rating", YandexGame.savesData.rating);
-        _coinsEarned.text = $"+{collectedCoins} �����\n+{rating} �������";
+        _coinsEarned.text = $"+{collectedCoins} {_coinsText[YandexGame.EnvironmentData.language]}\n+{rating} {_ratingText[YandexGame.EnvironmentData.language]}";
     }
 
     public void PlusToSkin()

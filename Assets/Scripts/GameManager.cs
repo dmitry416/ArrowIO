@@ -1,4 +1,5 @@
-using Cinemachine;
+﻿using Cinemachine;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     private bool _isGameStopped = false;
 
+    private Dictionary<string, string> _congeatText = new Dictionary<string, string> { { "ru", "Отлично" }, { "uz", "Ajoyib" }, { "kk", "Керемет" }, { "be", "Выдатна" }, { "uk", "Відмінно" }, { "en", "Great" }, { "tr", "Mükemmel" }, { "es", "Muy bien" }, { "de", "Ausgezeichnet" }, { "fr", "Parfaitement" }, { "pt", "Excelentemente" } };
+    private Dictionary<string, string> _timeText = new Dictionary<string, string> { { "ru", "Время вышло" }, { "uz", "Vaqt tugadi" }, { "kk", "Уақыт өтті" }, { "be", "Час выйшаў" }, { "uk", "Час вийшов" }, { "en", "Time's up" }, { "tr", "Zaman doldu" }, { "es", "Se acabó el tiempo" }, { "de", "Die Zeit ist abgelaufen" }, { "fr", "Le temps est écoulé" }, { "pt", "Acabou o tempo." } };
+
     private void Awake()
     {
         _playerHero = YandexGame.savesData.selectedSkin;
@@ -37,11 +41,11 @@ public class GameManager : MonoBehaviour
         _cvc.Follow = _player.gameObject.transform;
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
-            _player.onDeath += () => _gameUI.EndPanel("�������");
+            _player.onDeath += () => _gameUI.EndPanel(_congeatText[YandexGame.EnvironmentData.language]);
         else
         {
             _gameUI.SetTimer();
-            _gameUI.onTimerEnd += () => _gameUI.EndPanel("����� ���������");
+            _gameUI.onTimerEnd += () => _gameUI.EndPanel(_timeText[YandexGame.EnvironmentData.language]);
             _gameUI.onTimerEnd += StopCharacters;
         }
 

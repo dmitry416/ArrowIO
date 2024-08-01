@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 8593637}
   - component: {fileID: 8593639}
   - component: {fileID: 8593638}
+  - component: {fileID: 8593640}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -301,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000061035, y: -116}
+  m_AnchoredPosition: {x: -0.000061035, y: -81.52002}
   m_SizeDelta: {x: 600.3357, y: 71.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8593638
@@ -353,7 +354,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.7
+  m_fontSize: 32
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -403,6 +404,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8593636}
   m_CullTransparentMesh: 1
+--- !u!114 &8593640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 8593638}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0418\u0433\u0440\u0430\u0439 \u0437\u0430 \u0433\u0435\u0440\u043E\u044F,
+    \u0447\u0442\u043E\u0431\u044B \u043E\u0442\u043A\u0440\u044B\u0442\u044C \u043D\u043E\u0432\u044B\u0435
+    \u0441\u0442\u0438\u043B\u0438"
+  en: Play as a hero to unlock new styles
+  tr: "Yeni stillerin kilidini a\xE7mak i\xE7in kahraman olarak oynay\u0131n"
+  az: 
+  be: "\u0413\u0443\u043B\u044F\u0439 \u0437\u0430 \u0433\u0435\u0440\u043E\u044F,
+    \u043A\u0430\u0431 \u0430\u0434\u043A\u0440\u044B\u0446\u044C \u043D\u043E\u0432\u044B\u044F
+    \u0441\u0442\u044B\u043B\u0456"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "Incarnez un h\xE9ros pour d\xE9bloquer de nouveaux styles"
+  kk: "\u0416\u0430\u04A3\u0430 \u0441\u0442\u0438\u043B\u044C\u0434\u0435\u0440\u0434\u0456\u04A3
+    \u049B\u04B1\u043B\u043F\u044B\u043D \u0430\u0448\u0443 \u04AF\u0448\u0456\u043D
+    \u043A\u0435\u0439\u0456\u043F\u043A\u0435\u0440 \u0440\u0435\u0442\u0456\u043D\u0434\u0435
+    \u043E\u0439\u043D\u0430\u04A3\u044B\u0437"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0413\u0440\u0430\u0439 \u0437\u0430 \u0433\u0435\u0440\u043E\u044F, \u0449\u043E\u0431
+    \u0432\u0456\u0434\u043A\u0440\u0438\u0442\u0438 \u043D\u043E\u0432\u0456 \u0441\u0442\u0438\u043B\u0456"
+  uz: Yangi uslublarni ochish uchun qahramon sifatida o'ynang
+  es: "Juega como un h\xE9roe para desbloquear nuevos estilos."
+  pt: "Jogue como um her\xF3i para desbloquear novos estilos"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Spiele als Held, um neue Stile freizuschalten
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &40757139
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +828,7 @@ GameObject:
   - component: {fileID: 64208224}
   - component: {fileID: 64208226}
   - component: {fileID: 64208225}
+  - component: {fileID: 64208227}
   m_Layer: 0
   m_Name: Text_Title
   m_TagString: Untagged
@@ -890,6 +952,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64208223}
   m_CullTransparentMesh: 1
+--- !u!114 &64208227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64208223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 64208225}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041C\u0423\u0417\u042B\u041A\u0410"
+  en: MUSIC
+  tr: "M\xDCZ\u0130K"
+  az: 
+  be: "\u041C\u0423\u0417\u042B\u041A\u0410"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: MUSIQUE
+  kk: "\u041C\u0423\u0417\u042B\u041A\u0410"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u041C\u0423\u0417\u0418\u041A\u0410"
+  uz: MUSIQA
+  es: "M\xDASICA"
+  pt: "M\xDASICA"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: MUSIK
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1001 &67029528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1188,6 +1302,7 @@ GameObject:
   - component: {fileID: 67228654}
   - component: {fileID: 67228656}
   - component: {fileID: 67228655}
+  - component: {fileID: 67228657}
   m_Layer: 0
   m_Name: Text_Title
   m_TagString: Untagged
@@ -1311,6 +1426,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67228653}
   m_CullTransparentMesh: 1
+--- !u!114 &67228657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67228653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 67228655}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041D\u0410 \u0412\u0420\u0415\u041C\u042F"
+  en: FOR A WHILE
+  tr: "B\u0130R S\xDCRE \u0130\xC7\u0130N"
+  az: 
+  be: "\u041D\u0410 \u0427\u0410\u0421"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: PENDANT UN CERTAIN TEMPS
+  kk: "\u0423\u0410\u049A\u042B\u0422\u0428\u0410"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u041D\u0410 \u0427\u0410\u0421"
+  uz: QISQA MUDDATGA
+  es: POR UN MOMENTO
+  pt: POR UM TEMPO
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: AUF ZEIT
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!114 &122066112 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7727102838819505117, guid: e1d0ab4c483bd449e87073e7da7635bd, type: 3}
@@ -1417,6 +1584,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &172313868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5184737396289257688, guid: 4154006a1718e48ce84b13c6b5d042c1, type: 3}
+  m_PrefabInstance: {fileID: 1194401238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &172313871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5184737396289257691, guid: 4154006a1718e48ce84b13c6b5d042c1, type: 3}
+  m_PrefabInstance: {fileID: 1194401238}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172313868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &172313873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172313868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 172313871}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0412\u0432\u0435\u0434\u0438 \u0441\u0432\u043E\u0435 \u0438\u043C\u044F..."
+  en: Enter your name...
+  tr: "Ad\u0131n\u0131z\u0131 giriniz..."
+  az: 
+  be: "\u0423\u0432\u044F\u0434\u0437\u0456 \u0441\u0432\u0430\u0451 \u0456\u043C\u044F..."
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Entrez votre nom...
+  kk: "\u0410\u0442\u044B\u04A3\u044B\u0437\u0434\u044B \u0435\u043D\u0433\u0456\u0437\u0456\u04A3\u0456\u0437..."
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0412\u0432\u0435\u0434\u0438 \u0441\u0432\u043E\u0454 \u0456\u043C'\u044F..."
+  uz: Ismingizni kiriting...
+  es: Introduzca su nombre...
+  pt: Digite seu nome...
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Gib deinen Namen ein...
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &229794268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2371,164 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &355031090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355031091}
+  - component: {fileID: 355031095}
+  - component: {fileID: 355031094}
+  - component: {fileID: 355031093}
+  - component: {fileID: 355031092}
+  m_Layer: 5
+  m_Name: Lang
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &355031091
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355031090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1258071018}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 84, y: 69}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &355031092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355031090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535016f762597944da1fa2225859a829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flag: {fileID: 355031094}
+  _sprites:
+  - {fileID: 21300000, guid: 34aa7bd5a54604942b136ff4b2b4ef23, type: 3}
+  - {fileID: 21300000, guid: 04b09fce196cf9a46966096ad4047f67, type: 3}
+  - {fileID: 21300000, guid: 8e2dc22fcfe298a4ba340fbc7cdbf9b1, type: 3}
+  - {fileID: 21300000, guid: 865fa1ca08ec673469eac7e050ac45e1, type: 3}
+  - {fileID: 21300000, guid: 79e05928f0bf745d086c7555589cafb6, type: 3}
+  - {fileID: 21300000, guid: e37a1b798d748421f9f1c615a180e1d9, type: 3}
+  - {fileID: 21300000, guid: ddbb2b8fc7fbc47dbb429b4b3440d0eb, type: 3}
+  - {fileID: 21300000, guid: 27113a28144814c42823638cf2383db8, type: 3}
+  - {fileID: 21300000, guid: 17672a106a6194a6d9afbe4783c7ef59, type: 3}
+  - {fileID: 21300000, guid: 264a4faffba7e4527ac3e13b43ecc117, type: 3}
+  - {fileID: 21300000, guid: c69fcce7f1af14a0aabe348dc3a64d5a, type: 3}
+--- !u!114 &355031093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355031090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 355031094}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 355031092}
+        m_TargetAssemblyTypeName: LanguageSwapper, Assembly-CSharp
+        m_MethodName: NextFlag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &355031094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355031090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 34aa7bd5a54604942b136ff4b2b4ef23, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &355031095
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355031090}
+  m_CullTransparentMesh: 1
 --- !u!1001 &382136242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3444,6 +3837,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1740307744}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2301610487299599561, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1463148939}
     - targetCorrespondingSourceObject: {fileID: 2301610486464956965, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
       insertIndex: -1
       addedObject: {fileID: 633442217}
@@ -4405,6 +4801,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8056374027458760450, guid: 6d752d68651dc4f2889f1bed94a636e5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 807378591}
+    - targetCorrespondingSourceObject: {fileID: 8056374027739308963, guid: 6d752d68651dc4f2889f1bed94a636e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1676216516}
   m_SourcePrefab: {fileID: 100100000, guid: 6d752d68651dc4f2889f1bed94a636e5, type: 3}
 --- !u!224 &807378588 stripped
 RectTransform:
@@ -4849,6 +5248,7 @@ GameObject:
   - component: {fileID: 832453394}
   - component: {fileID: 832453396}
   - component: {fileID: 832453395}
+  - component: {fileID: 832453397}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4972,6 +5372,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832453393}
   m_CullTransparentMesh: 1
+--- !u!114 &832453397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832453393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 832453395}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0418\u0433\u0440\u0430\u0442\u044C"
+  en: Play
+  tr: Oynamak
+  az: 
+  be: "\u0413\u0443\u043B\u044F\u0446\u044C"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Jouer
+  kk: "\u041E\u0439\u043D\u0430\u0443"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0413\u0440\u0430\u0442\u0438"
+  uz: O'ynang
+  es: Jugar
+  pt: Jogar
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Spielen
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &876629849
 GameObject:
   m_ObjectHideFlags: 0
@@ -7367,7 +7819,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5184737396289257688, guid: 4154006a1718e48ce84b13c6b5d042c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 172313873}
   m_SourcePrefab: {fileID: 100100000, guid: 4154006a1718e48ce84b13c6b5d042c1, type: 3}
 --- !u!224 &1194401239 stripped
 RectTransform:
@@ -7648,6 +8103,7 @@ GameObject:
   - component: {fileID: 1211349374}
   - component: {fileID: 1211349376}
   - component: {fileID: 1211349375}
+  - component: {fileID: 1211349377}
   m_Layer: 0
   m_Name: Text_Title (1)
   m_TagString: Untagged
@@ -7771,6 +8227,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211349373}
   m_CullTransparentMesh: 1
+--- !u!114 &1211349377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211349373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1211349375}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0417\u0412\u0423\u041A\u0418"
+  en: SOUNDS
+  tr: SESLER
+  az: 
+  be: "\u0413\u0443\u043A\u0456"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: DES SONS
+  kk: "\u0414\u044B\u0431\u044B\u0441\u0442\u0430\u0440"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0417\u0412\u0423\u041A\u0418"
+  uz: OVOZLAR
+  es: SONIDOS
+  pt: SONS
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: "GER\xC4USCHE"
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &1211722296
 GameObject:
   m_ObjectHideFlags: 0
@@ -7885,6 +8393,7 @@ RectTransform:
   m_Children:
   - {fileID: 617581217}
   - {fileID: 1673447496}
+  - {fileID: 355031091}
   m_Father: {fileID: 1617378618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8948,6 +9457,7 @@ GameObject:
   - component: {fileID: 1366994313}
   - component: {fileID: 1366994315}
   - component: {fileID: 1366994314}
+  - component: {fileID: 1366994316}
   m_Layer: 0
   m_Name: Text_Info
   m_TagString: Untagged
@@ -9023,12 +9533,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 43.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 40
+  m_fontSizeMax: 287.6
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -9073,6 +9583,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366994312}
   m_CullTransparentMesh: 1
+--- !u!114 &1366994316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366994312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1366994314}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0417\u0430 3 \u043C\u0438\u043D\u0443\u0442\u044B \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E
+    \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043A\u0430\u043A \u043C\u043E\u0436\u043D\u043E
+    \u0431\u043E\u043B\u044C\u0448\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
+  en: In 3 minutes you need to get as high a level as possible
+  tr: "3 dakika i\xE7inde m\xFCmk\xFCn oldu\u011Fu kadar y\xFCksek bir seviyeye ula\u015Fman\u0131z
+    gerekiyor"
+  az: 
+  be: "\u0417\u0430 3 \u0445\u0432\u0456\u043B\u0456\u043D\u044B \u043D\u0435\u0430\u0431\u0445\u043E\u0434\u043D\u0430
+    \u0430\u0442\u0440\u044B\u043C\u0430\u0446\u044C \u044F\u043A \u043C\u0430\u0433\u0430
+    \u0431\u043E\u043B\u044C\u0448\u044B \u045E\u0437\u0440\u043E\u0432\u0435\u043D\u044C"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "En 3 minutes, vous devez atteindre le niveau le plus \xE9lev\xE9 possible"
+  kk: "3 \u043C\u0438\u043D\u0443\u0442 \u0456\u0448\u0456\u043D\u0434\u0435 \u043C\u04AF\u043C\u043A\u0456\u043D\u0434\u0456\u0433\u0456\u043D\u0448\u0435
+    \u0436\u043E\u0493\u0430\u0440\u044B \u0434\u0435\u04A3\u0433\u0435\u0439\u0433\u0435
+    \u0436\u0435\u0442\u0443 \u043A\u0435\u0440\u0435\u043A"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0417\u0430 3 \u0445\u0432\u0438\u043B\u0438\u043D\u0438 \u043D\u0435\u043E\u0431\u0445\u0456\u0434\u043D\u043E
+    \u043E\u0442\u0440\u0438\u043C\u0430\u0442\u0438 \u044F\u043A\u043E\u043C\u043E\u0433\u0430
+    \u0431\u0456\u043B\u044C\u0448\u0438\u0439 \u0440\u0456\u0432\u0435\u043D\u044C"
+  uz: 3 daqiqada imkon qadar yuqori darajaga erishishingiz kerak
+  es: "En 3 minutos necesitas llegar al nivel m\xE1s alto posible."
+  pt: "Em 3 minutos voc\xEA precisa chegar ao n\xEDvel mais alto poss\xEDvel"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: "In 3 Minuten m\xFCssen Sie ein m\xF6glichst hohes Level erreichen"
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!114 &1376441066 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5879431061108273349, guid: 5cd5dfbb283b346cc874caa5b31044b1, type: 3}
@@ -9095,6 +9666,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1463148935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2301610487299599561, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
+  m_PrefabInstance: {fileID: 633442212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1463148937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2301610487299599563, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
+  m_PrefabInstance: {fileID: 633442212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463148935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1463148939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463148935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1463148937}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041D\u0410\u0421\u0422\u0420\u041E\u0419\u041A\u0418"
+  en: SETTINGS
+  tr: AYARLAR
+  az: 
+  be: "\u041D\u0410\u0421\u0422\u0420\u041E\u0419\u041A\u0406"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "PARAM\xC8TRES"
+  kk: "\u041F\u0410\u0420\u0410\u041C\u0415\u0422\u0420\u041B\u0415\u0420"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u041D\u0410\u041B\u0410\u0428\u0422\u0423\u0412\u0410\u041D\u041D\u042F"
+  uz: SOZLAMALAR
+  es: AJUSTES
+  pt: "CONFIGURA\xC7\xD5ES"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: EINSTELLUNGEN
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &1570502695
 GameObject:
   m_ObjectHideFlags: 0
@@ -9819,6 +10458,74 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1947246406625268809, guid: 7952cdbcd97944b18bf109ec918b9b77, type: 3}
   m_PrefabInstance: {fileID: 1673447495}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1676216512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8056374027739308963, guid: 6d752d68651dc4f2889f1bed94a636e5, type: 3}
+  m_PrefabInstance: {fileID: 807378587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1676216514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8056374027739308989, guid: 6d752d68651dc4f2889f1bed94a636e5, type: 3}
+  m_PrefabInstance: {fileID: 807378587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676216512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1676216516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676216512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1676216514}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0418\u0413\u0420\u0410\u0422\u042C"
+  en: PLAY
+  tr: OYNAMAK
+  az: 
+  be: "\u0413\u0423\u041B\u042C\u041D\u042F"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: JOUER
+  kk: "\u041E\u0419\u041D\u0410\u0423"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0413\u0420\u0410\u0422\u0418"
+  uz: "O\u2018YNA"
+  es: JUGAR
+  pt: JOGAR
+  ar: 
+  id: 
+  ja: "\u904A\u3076"
+  it: 
+  de: SPIELEN
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 12/12 completed
+  componentTextField: 1
+  countLang: 12
 --- !u!1 &1682799530
 GameObject:
   m_ObjectHideFlags: 0
@@ -11325,6 +12032,7 @@ GameObject:
   - component: {fileID: 1998329790}
   - component: {fileID: 1998329792}
   - component: {fileID: 1998329791}
+  - component: {fileID: 1998329793}
   m_Layer: 0
   m_Name: Text_Title
   m_TagString: Untagged
@@ -11448,6 +12156,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998329789}
   m_CullTransparentMesh: 1
+--- !u!114 &1998329793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998329789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 1998329791}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041A\u0423\u041F\u0418\u0422\u042C \u041C\u041E\u041D\u0415\u0422\u042B"
+  en: BUY COINS
+  tr: JETON SATIN ALIN
+  az: 
+  be: "\u041A\u0443\u043F\u0456\u0446\u044C \u041C\u0410\u041D\u0415\u0422\u042B"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "ACHETER DES PI\xC8CES"
+  kk: "\u0422\u0418\u042B\u041D \u0421\u0410\u0422\u042B\u041F \u0410\u041B\u0423"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u041A\u0423\u041F\u0418\u0422\u0418 \u041C\u041E\u041D\u0415\u0422\u0418"
+  uz: TANGALAR SOTIB OLING
+  es: COMPRAR MONEDAS
+  pt: COMPRAR MOEDAS
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: "KAUFE M\xDCNZEN"
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &2001944461
 GameObject:
   m_ObjectHideFlags: 0
@@ -12256,6 +13016,7 @@ GameObject:
   - component: {fileID: 8477891376448294158}
   - component: {fileID: 8477891376448294156}
   - component: {fileID: 8477891376448294159}
+  - component: {fileID: 8477891376448294160}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -12379,6 +13140,58 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8477891376448294160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477891376448294153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 8477891376448294159}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0418\u0433\u0440\u0430\u0442\u044C"
+  en: Play
+  tr: Oynamak
+  az: 
+  be: "\u0413\u0443\u043B\u044F\u0446\u044C"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: Jouer
+  kk: "\u041E\u0439\u043D\u0430\u0443"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0413\u0440\u0430\u0442\u0438"
+  uz: O'ynang
+  es: Jugar
+  pt: Jogar
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: Spielen
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &8477891376576873120
 GameObject:
   m_ObjectHideFlags: 0
@@ -12522,12 +13335,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 54.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 40
+  m_fontSizeMax: 297.2
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -12575,6 +13388,7 @@ GameObject:
   - component: {fileID: 8477891376685683204}
   - component: {fileID: 8477891376685683258}
   - component: {fileID: 8477891376685683205}
+  - component: {fileID: 8477891376685683259}
   m_Layer: 0
   m_Name: Text_Info
   m_TagString: Untagged
@@ -12590,6 +13404,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8477891376685683207}
   m_CullTransparentMesh: 1
+--- !u!114 &8477891376685683259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477891376685683207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 8477891376685683205}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0411\u0435\u0437 \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0438
+    \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0433\u043E \u043F\u043E\u044F\u0432\u043B\u0435\u0438\u043D\u0438\u044F"
+  en: No possibility of reappearance
+  tr: "Tekrar ortaya \xE7\u0131kma ihtimali yok"
+  az: 
+  be: "\u0411\u0435\u0437 \u043C\u0430\u0433\u0447\u044B\u043C\u0430\u0441\u0446\u0456
+    \u043F\u0430\u045E\u0442\u043E\u0440\u043D\u0430\u0433\u0430 \u0437'\u044F\u045E\u043B\u0435\u043D\u043D\u044F"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: "Aucune possibilit\xE9 de r\xE9apparition"
+  kk: "\u049A\u0430\u0439\u0442\u0430 \u043F\u0430\u0439\u0434\u0430 \u0431\u043E\u043B\u0443
+    \u043C\u04AF\u043C\u043A\u0456\u043D\u0434\u0456\u0433\u0456 \u0436\u043E\u049B"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0411\u0435\u0437 \u043C\u043E\u0436\u043B\u0438\u0432\u043E\u0441\u0442\u0456
+    \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0457 \u043F\u043E\u044F\u0432\u0438"
+  uz: Qayta paydo bo'lish ehtimoli yo'q
+  es: "Sin posibilidad de reaparici\xF3n"
+  pt: Sem possibilidade de reaparecimento
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: "Keine M\xF6glichkeit eines Wiederauftauchens"
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1 &8477891376831054033
 GameObject:
   m_ObjectHideFlags: 0
@@ -12833,6 +13703,7 @@ GameObject:
   - component: {fileID: 8477891377745858746}
   - component: {fileID: 8477891377745858744}
   - component: {fileID: 8477891377745858747}
+  - component: {fileID: 8477891377745858748}
   m_Layer: 0
   m_Name: Text_Title
   m_TagString: Untagged
@@ -12956,6 +13827,58 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8477891377745858748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477891377745858693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 8477891377745858747}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041E\u0411\u042B\u0427\u041D\u042B\u0419"
+  en: ORDINARY
+  tr: SIRADAN
+  az: 
+  be: "\u0417\u0432\u044B\u0447\u0430\u0439\u043D\u044B"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: ORDINAIRE
+  kk: "\u041A\u04D8\u0414\u0406\u041F\u0422\u0406"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0417\u0412\u0418\u0427\u0410\u0419\u041D\u0418\u0419"
+  uz: ODDIY
+  es: "COM\xDAN"
+  pt: "ORDIN\xC1RIO"
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: NORMAL
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!114 &8477891377997531496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13430,6 +14353,7 @@ GameObject:
   - component: {fileID: 8937836167181658972}
   - component: {fileID: 8937836167181658974}
   - component: {fileID: 8937836167181658973}
+  - component: {fileID: 8937836167181658975}
   m_Layer: 0
   m_Name: Text_Title
   m_TagString: Untagged
@@ -13553,6 +14477,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8937836167181658963}
   m_CullTransparentMesh: 1
+--- !u!114 &8937836167181658975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8937836167181658963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 8937836167181658973}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0420\u0415\u0416\u0418\u041C \u0418\u0413\u0420\u042B"
+  en: GAME MODE
+  tr: OYUN MODU
+  az: 
+  be: "\u0420\u042D\u0416\u042B\u041C \u0413\u0423\u041B\u042C\u041D\u0406"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: MODE DE JEU
+  kk: "\u041E\u0419\u042B\u041D \u0420\u0415\u0416\u0418\u041C\u0406"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u0420\u0415\u0416\u0418\u041C \u0413\u0420\u0418"
+  uz: "O\u2018YIN REJIMI"
+  es: MODO DE JUEGO
+  pt: MODO DE JOGO
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: SPIELMODUS
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
