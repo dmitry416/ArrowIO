@@ -148,5 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _critChance: 0.2
-  _distance: 5
+  _distance: 7
   _speed: 15

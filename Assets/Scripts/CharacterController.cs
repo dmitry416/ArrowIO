@@ -12,7 +12,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] public int _lvl = 0;
     [SerializeField] private float _coins = 1;
 
-    private bool isDead = false;
+    public bool isDead = false;
     private Rigidbody _rb;
     private CharacterAnimationController _animController;
     private CharacterUIController _ui;
@@ -202,6 +202,8 @@ public class CharacterController : MonoBehaviour
             return;
         _coins -= Mathf.Pow(2, _lvl);
         _lvl++;
+        _curHealth = _health;
+        _ui.SetHP(_curHealth / _health);
         _leaderboard.UpdateLeaderboard();
         _ui.SetLVL(_lvl);
         onLVLUp?.Invoke();

@@ -39,6 +39,7 @@ public class CharacterAnimationController : MonoBehaviour
     public void Death()
     {
         _isDead = true;
+        Running(false);
         _animator.SetTrigger(death);
     }
 

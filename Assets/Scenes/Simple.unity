@@ -3102,8 +3102,8 @@ RectTransform:
   m_Children:
   - {fileID: 63169420}
   - {fileID: 1153681188}
-  - {fileID: 815739930}
   - {fileID: 1121291127}
+  - {fileID: 815739930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5880,7 +5880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6807,7 +6807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2301610487299599562, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 288.87
+      value: 289.23
       objectReference: {fileID: 0}
     - target: {fileID: 2301610487299599562, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6855,7 +6855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2301610488260765306, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 244.215
+      value: 244.03499
       objectReference: {fileID: 0}
     - target: {fileID: 2301610488260765306, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -9,7 +9,7 @@ public class Heal : MonoBehaviour
     {
         if (other.TryGetComponent(out CharacterController character))
         {
-            character.AddHealth(15);
+            character.AddHealth(25);
             Locate();
         }
     }

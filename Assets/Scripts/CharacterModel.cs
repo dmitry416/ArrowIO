@@ -9,6 +9,7 @@ public class CharacterModel : MonoBehaviour
     {
         _skins[_curSkin].SetActive(false);
         _skins[skinID].SetActive(true);
+        _curSkin = skinID;
     }
 
     public int GetSkinsLength()

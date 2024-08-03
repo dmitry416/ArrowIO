@@ -47,7 +47,7 @@ public class MenuModelController : MonoBehaviour
         if (_curModel == _ui.curSkin)
             _modelSlider.SetSelected(_ui.curStyle);
         else
-            _modelSlider.SetSelected(_ui.openSkins[_curModel] == -1 ? 0 : _ui.openSkins[_curModel] / 10);
+            _modelSlider.SetSelected(_ui.openSkins[_curModel] == -1 ? 0 : Mathf.Min(_ui.openSkins[_curModel] / 10, 4));
         if (_ui.openSkins[_curModel] == -1)
         {
             _button.GetComponent<Image>().color = Color.green;

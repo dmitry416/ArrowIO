@@ -5,7 +5,7 @@ namespace YG.EditorScr.BuildModify
     {
         public static void LoadGameRun()
         {
-            if (infoYG.loadGameRun == false)
+            if (/*infoYG.loadGameRun == */false)
             {
                 indexFile = indexFile.Replace("if (LocalHost()) // Delete when setting up: Load Game Run", "if (LocalHost())");
             }

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         _hand = GetComponentInChildren<Hand>();
         _skillCont = FindObjectOfType<SkillGroupController>();
         _charCont.onCoinChanged += _playerUI.UpdateUI;
-        _charCont.SetNick(YandexGame.savesData.nickName);
+        _charCont.SetNick(YandexGame.playerName);
         _skillCont.onSelect += SelectSkill;
         _charCont.onLVLUp += LVLUp;
         if (!YandexGame.EnvironmentData.isDesktop)

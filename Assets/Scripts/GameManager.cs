@@ -1,6 +1,5 @@
 ﻿using Cinemachine;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YG;
@@ -41,7 +40,10 @@ public class GameManager : MonoBehaviour
         _cvc.Follow = _player.gameObject.transform;
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
             _player.onDeath += () => _gameUI.EndPanel(_congeatText[YandexGame.EnvironmentData.language]);
+            _player.onDeath += Stop;
+        }
         else
         {
             _gameUI.SetTimer();
@@ -67,9 +69,14 @@ public class GameManager : MonoBehaviour
         CharacterController _enemy = Instantiate(_enemyPrefab, position, _enemyPrefab.transform.rotation).GetComponent<CharacterController>();
         _enemy.SetHero(_heroPrefabs.GetHero(Random.Range(0, _heroPrefabs.GetHeroesLength())));
         _enemy.SetSkin(Random.Range(0, 5));
-        _enemy.SetWeapon(Random.Range(0, _weaponPrefabs.GetWeaponsLength()));
+        _enemy.SetWeapon(Random.Range(0, /*_weaponPrefabs.GetWeaponsLength()*/3));
         _enemy.GetComponent<EnemyController>().SetLVL(Mathf.Min(1, _player._lvl + Random.Range(-1, 2)));
         _enemy.onDeath += SpawnEnemy;
+    }
+
+    private void Stop()
+    {
+        _isGameStopped = true;
     }
 
     public Vector3 GetPlayerPos()

@@ -148,10 +148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 7
-  _critChance: 0.2
+  _critChance: 0.3
   _distance: 5
-  _speed: 5
-  _radius: 2
+  _speed: 10
+  _radius: 3
   _explosionPrefab: {fileID: 9006093207072856991}
 --- !u!1001 &9006093207072890175
 PrefabInstance:

@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00622dc624ce354d9a98848fa11ef0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 3
+  _damage: 4
   _critChance: 0.2
   _distance: 4
-  _speed: 5
-  _radius: 3
+  _speed: 7
+  _radius: 2
   _explosionPrefab: {fileID: 7654044143501532764}
   _delta: 1
 --- !u!54 &2845961785045161116

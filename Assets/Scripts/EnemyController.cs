@@ -348,14 +348,17 @@ public class EnemyController : MonoBehaviour
         _charCont.Move(_agent.desiredVelocity.normalized);
         if (_charCont._target != null)
             _charCont.Shoot();
-        if (Vector3.Distance(_agent.nextPosition, transform.position) < 1f || _agent.nextPosition == null)
+        if (Vector3.Distance(_agent.nextPosition, transform.position) < 2f || _agent.nextPosition == null)
             FindWhereToGo();
     }
 
     private void FindWhereToGo()
     {
+        if (_charCont.isDead) 
+            return;
         _whereToGo = FindAnyObjectByType<Diamond>().transform;
         _agent.SetDestination(_whereToGo.position);
+        Invoke("FindWhereToGo", 20);
     }
 
     private void Death()

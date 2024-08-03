@@ -14,6 +14,7 @@ public class RewardUI : MonoBehaviour
 
     private void OnEnable()
     {
+        Invoke("Active", 3);
         _reward = Random.Range(100, 500);
         _coins.text = _reward.ToString();
         _bg.DORotate(new Vector3(0, 0, -90), 1f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
@@ -22,5 +23,10 @@ public class RewardUI : MonoBehaviour
             .Append(_gift.DOPunchScale(Vector3.one * 0.3f, 0.5f, 1))
             .Join(_gift.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.75f));
         _ui.coins += _reward;
+    }
+
+    private void Active()
+    {
+        GetComponent<Button>().interactable = true;
     }
 }

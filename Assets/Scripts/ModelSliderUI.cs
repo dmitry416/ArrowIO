@@ -35,7 +35,7 @@ public class ModelSliderUI : MonoBehaviour
             _checkers[selectedID].sprite = _enable;
             _checkers[selectedID].GetComponent<Button>().interactable = true;
         }
-        _checkers[id].sprite = _selected;
+        _checkers[id].sprite = _selected;   
         _checkers[id].GetComponent<Button>().interactable = false;
         selectedID = id;
         onSelect?.Invoke(selectedID);

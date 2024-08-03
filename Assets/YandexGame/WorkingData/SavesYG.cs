@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace YG
 {
     [System.Serializable]
@@ -22,8 +21,7 @@ namespace YG
         public float musicValue = 0.2f;
         public float soundValue = 0.5f;
         public string daylyEnded = "";
-        public string nickName = "";
-
+        //public string nickName = "";
 
         public SavesYG()
         {

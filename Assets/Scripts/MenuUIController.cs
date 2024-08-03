@@ -23,7 +23,7 @@ public class MenuUIController : MonoBehaviour
     [Space]
     [SerializeField] private GameObject _settings;
     [SerializeField] private TextMeshProUGUI _coinsUI;
-    [SerializeField] private TMP_InputField _nickname;
+    //[SerializeField] private TMP_InputField _nickname;
     [SerializeField] private TextMeshProUGUI _dayly;
     [SerializeField] private TextMeshProUGUI _rating;
     [SerializeField] private Button _daylyButton;
@@ -49,12 +49,16 @@ public class MenuUIController : MonoBehaviour
     {
         YandexGame.GetDataEvent += GetLoad;
         YandexGame.PurchaseSuccessEvent += SuccessPurchased;
+        YandexGame.SwitchLangEvent += UpdateDalyTimer;
+        YandexGame.SwitchLangEvent += UpdateOnlyTimer;
     }
 
     private void OnDisable()
     {
         YandexGame.GetDataEvent -= GetLoad;
         YandexGame.PurchaseSuccessEvent -= SuccessPurchased;
+        YandexGame.SwitchLangEvent -= UpdateDalyTimer;
+        YandexGame.SwitchLangEvent -= UpdateOnlyTimer;
     }
 
     void SuccessPurchased(string id)
@@ -62,8 +66,8 @@ public class MenuUIController : MonoBehaviour
         print(id);
         switch (id)
         {
-            case "100":
-                coins += 100;
+            case "2000":
+                coins += 2000;
                 break;
             case "500":
                 coins += 500;
@@ -82,11 +86,11 @@ public class MenuUIController : MonoBehaviour
         curStyle = YandexGame.savesData.selectedStyle;
         curWeapon = YandexGame.savesData.selectedWeapon;
         coins = YandexGame.savesData.coins;
-        _nickname.text = YandexGame.savesData.nickName;
+        //_nickname.text = YandexGame.savesData.nickName;
         _rating.text = YandexGame.savesData.rating.ToString();
         _daylyEnd = YandexGame.savesData.daylyEnded;
         UpdateCoins();
-        UpdateDalyTimer();
+        UpdateDalyTimer(YandexGame.savesData.language);
         canGetData?.Invoke();
     }
 
@@ -112,11 +116,11 @@ public class MenuUIController : MonoBehaviour
         YandexGame.SaveProgress();
     }
 
-    public void SaveNick()
+    /*public void SaveNick()
     {
         YandexGame.savesData.nickName = _nickname.text;
         YandexGame.SaveProgress();
-    }
+    }*/
 
     public void SaveDay()
     {
@@ -158,11 +162,11 @@ public class MenuUIController : MonoBehaviour
             .Append(_donat3.transform.DOScale(Vector3.one * 1.5f, 0.5f));
     }
 
-    public void UpdateDalyTimer()
+    public void UpdateDalyTimer(string lang)
     {
         if (_daylyEnd == "")
         {
-            _dayly.text = _collectText[YandexGame.EnvironmentData.language];
+            _dayly.text = _collectText[lang];
             _daylyButton.interactable = true;
         }
         else
@@ -187,8 +191,9 @@ public class MenuUIController : MonoBehaviour
         int step = curCoin < coins ? 1 : -1;
         while (curCoin != coins)
         {
+            for (int i = 0; i < 5 && curCoin != coins; ++i)
+                curCoin += step;    
             _coinsUI.text = curCoin.ToString();
-            curCoin += step;
             yield return null;
         }
     }
@@ -216,21 +221,21 @@ public class MenuUIController : MonoBehaviour
 
     private IEnumerator Counter()
     {
-        UpdateOnlyTimer();
+        UpdateOnlyTimer(YandexGame.EnvironmentData.language);
         TimeSpan second = new TimeSpan(0, 0, 1);
         while (_remain.TotalSeconds > 0)
         {
-            UpdateOnlyTimer();
+            UpdateOnlyTimer(YandexGame.EnvironmentData.language);
             yield return new WaitForSeconds(1);
             _remain -= second;
         }
     }
 
-    private void UpdateOnlyTimer()
+    private void UpdateOnlyTimer(string lang)
     {
         if (_remain.TotalSeconds <= 1)
         {
-            _dayly.text = _collectText[YandexGame.EnvironmentData.language];
+            _dayly.text = _collectText[lang];
             _daylyButton.interactable = true;
         }
         else
