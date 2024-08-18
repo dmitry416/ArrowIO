@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        YandexGame.GameplayStart();
         _playerHero = YandexGame.savesData.selectedSkin;
         _playerSkin = YandexGame.savesData.selectedStyle;
         _playerWeapon = YandexGame.savesData.selectedWeapon;
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
     private void StopCharacters()
     {
         _isGameStopped = true;
+        YandexGame.GameplayStop();
         foreach (CharacterController character in FindObjectsOfType<CharacterController>())
             character.Stop();
     }
@@ -69,7 +71,7 @@ public class GameManager : MonoBehaviour
         CharacterController _enemy = Instantiate(_enemyPrefab, position, _enemyPrefab.transform.rotation).GetComponent<CharacterController>();
         _enemy.SetHero(_heroPrefabs.GetHero(Random.Range(0, _heroPrefabs.GetHeroesLength())));
         _enemy.SetSkin(Random.Range(0, 5));
-        _enemy.SetWeapon(Random.Range(0, /*_weaponPrefabs.GetWeaponsLength()*/3));
+        _enemy.SetWeapon(Random.Range(0, _weaponPrefabs.GetWeaponsLength()));
         _enemy.GetComponent<EnemyController>().SetLVL(Mathf.Min(1, _player._lvl + Random.Range(-1, 2)));
         _enemy.onDeath += SpawnEnemy;
     }
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
     private void Stop()
     {
         _isGameStopped = true;
+        YandexGame.GameplayStop();
     }
 
     public Vector3 GetPlayerPos()

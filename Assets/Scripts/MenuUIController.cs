@@ -23,7 +23,6 @@ public class MenuUIController : MonoBehaviour
     [Space]
     [SerializeField] private GameObject _settings;
     [SerializeField] private TextMeshProUGUI _coinsUI;
-    //[SerializeField] private TMP_InputField _nickname;
     [SerializeField] private TextMeshProUGUI _dayly;
     [SerializeField] private TextMeshProUGUI _rating;
     [SerializeField] private Button _daylyButton;
@@ -80,13 +79,14 @@ public class MenuUIController : MonoBehaviour
 
     public void GetLoad()
     {
+        YandexGame.ConsumePurchases();
+        YandexGame.GameplayStop();
         openSkins = YandexGame.savesData.openSkins;
         openWeapons = YandexGame.savesData.openWeapons;
         curSkin = YandexGame.savesData.selectedSkin;
         curStyle = YandexGame.savesData.selectedStyle;
         curWeapon = YandexGame.savesData.selectedWeapon;
         coins = YandexGame.savesData.coins;
-        //_nickname.text = YandexGame.savesData.nickName;
         _rating.text = YandexGame.savesData.rating.ToString();
         _daylyEnd = YandexGame.savesData.daylyEnded;
         UpdateCoins();
@@ -115,12 +115,6 @@ public class MenuUIController : MonoBehaviour
         YandexGame.savesData.selectedStyle = curStyle;
         YandexGame.SaveProgress();
     }
-
-    /*public void SaveNick()
-    {
-        YandexGame.savesData.nickName = _nickname.text;
-        YandexGame.SaveProgress();
-    }*/
 
     public void SaveDay()
     {

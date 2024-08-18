@@ -1,9 +1,9 @@
 {
-  "idSave": 15769,
+  "idSave": 16023,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "coins": 371,
+  "coins": 7668,
   "openSkins": [
     -1,
     -1,
@@ -25,10 +25,10 @@
     true
   ],
   "selectedSkin": 5,
-  "selectedStyle": 0,
+  "selectedStyle": 4,
   "selectedWeapon": 5,
   "rating": 163,
   "musicValue": 0.147463709,
   "soundValue": 0.388475329,
-  "daylyEnded": "3 августа 2024 г. 15:54:35"
+  "daylyEnded": "5 августа 2024 г. 17:40:08"
 }

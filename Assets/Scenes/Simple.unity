@@ -2962,6 +2962,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 494440, guid: fd2f7df4b3ca56d429df0f47e62d9ed5, type: 3}
   m_PrefabInstance: {fileID: 520611799}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &556843262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2301610486532042041, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
+  m_PrefabInstance: {fileID: 1300350034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &556843263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2301610486532042043, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
+  m_PrefabInstance: {fileID: 1300350034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556843262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &556843264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556843262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 556843263}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041F\u041E\u041A\u0418\u041D\u0423\u0422\u042C \u0418\u0413\u0420\u0423"
+  en: LEAVE GAME
+  tr: OYUNDAN AYRIL
+  az: 
+  be: "\u041F\u0430\u043A\u0456\u043D\u0443\u0446\u044C \u0433\u0443\u043B\u044C\u043D\u044F"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: QUITTER LE JEU
+  kk: "\u041E\u0419\u042B\u041D\u0414\u0410\u041D \u0428\u042B\u0492\u0423"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: "\u041F\u041E\u041A\u0418\u041D\u0423\u0422\u0418 \u0413\u0420\u0423"
+  uz: O'YINNI CHEKLASH
+  es: SALIR DEL JUEGO
+  pt: SAIR DO JOGO
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: SPIEL VERLASSEN
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 11/11 completed
+  componentTextField: 1
+  countLang: 11
 --- !u!4 &559335546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 494440, guid: fd2f7df4b3ca56d429df0f47e62d9ed5, type: 3}
@@ -6892,6 +6960,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2301610486464956965, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1300350039}
+    - targetCorrespondingSourceObject: {fileID: 2301610486532042041, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 556843264}
   m_SourcePrefab: {fileID: 100100000, guid: 33aadb78f8455482593f0f6a9a51f616, type: 3}
 --- !u!224 &1300350035 stripped
 RectTransform:
