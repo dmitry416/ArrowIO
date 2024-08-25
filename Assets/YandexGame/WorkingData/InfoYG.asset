@@ -24,7 +24,7 @@ MonoBehaviour:
     photo: https://justplaygames.ru/public/icon_player.png
     payingStatus: paying
     serverTime: 1721201231000
-  AdWhenLoadingScene: 0
+  AdWhenLoadingScene: 1
   showFirstAd: 1
   rewardedAfterClosing: 1
   adDisplayCalls: 0
@@ -33,10 +33,10 @@ MonoBehaviour:
   loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 1
-  flush: 0
-  localSaveSync: 1
-  saveCloudInterval: 5
-  saveOnQuitGame: 0
+  flush: 1
+  localSaveSync: 0
+  saveCloudInterval: 0
+  saveOnQuitGame: 1
   quitGameParameters:
     objectName: YandexGame
     methodName: _SaveProgress
@@ -183,7 +183,7 @@ MonoBehaviour:
       rank: 2
       score: 10
   LocalizationEnable: 1
-  callingLanguageCheck: 1
+  callingLanguageCheck: 0
   translateMethod: 0
   domainAutoLocalization: com
   CSVFileTranslate:
@@ -333,7 +333,7 @@ MonoBehaviour:
     consumed: 1
   metricaEnable: 0
   metricaCounterID: 0
-  debug: 1
+  debug: 0
   archivingBuild: 0
   logoImageFormat: 1
   backgroundImageFormat: 3

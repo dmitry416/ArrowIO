@@ -12002,6 +12002,7 @@ GameObject:
   - component: {fileID: 1800061816}
   - component: {fileID: 1800061821}
   - component: {fileID: 1800061820}
+  - component: {fileID: 1800061822}
   m_Layer: 5
   m_Name: MenuUI
   m_TagString: Untagged
@@ -12147,6 +12148,18 @@ MonoBehaviour:
   _settings: {fileID: 354667526}
   musicValue: 1
   soundValue: 1
+--- !u!114 &1800061822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800061815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c66d3ab56cc71745982569cb28c3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1843590026
 GameObject:
   m_ObjectHideFlags: 0

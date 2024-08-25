@@ -62,7 +62,6 @@ public class MenuUIController : MonoBehaviour
 
     void SuccessPurchased(string id)
     {
-        print(id);
         switch (id)
         {
             case "2000":
@@ -75,11 +74,11 @@ public class MenuUIController : MonoBehaviour
                 coins += 1000;
                 break;
         }
+        MySave();
     }
 
     public void GetLoad()
     {
-        YandexGame.ConsumePurchases();
         YandexGame.GameplayStop();
         openSkins = YandexGame.savesData.openSkins;
         openWeapons = YandexGame.savesData.openWeapons;
@@ -89,15 +88,14 @@ public class MenuUIController : MonoBehaviour
         coins = YandexGame.savesData.coins;
         _rating.text = YandexGame.savesData.rating.ToString();
         _daylyEnd = YandexGame.savesData.daylyEnded;
-        UpdateCoins();
         UpdateDalyTimer(YandexGame.savesData.language);
         canGetData?.Invoke();
+        //YandexGame.ConsumePurchases();
     }
 
     public void MySave()
     {
         YandexGame.savesData.coins = coins;
-
         YandexGame.SaveProgress();
     }
 
