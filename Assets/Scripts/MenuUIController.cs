@@ -90,7 +90,6 @@ public class MenuUIController : MonoBehaviour
         _daylyEnd = YandexGame.savesData.daylyEnded;
         UpdateDalyTimer(YandexGame.savesData.language);
         canGetData?.Invoke();
-        //YandexGame.ConsumePurchases();
     }
 
     public void MySave()

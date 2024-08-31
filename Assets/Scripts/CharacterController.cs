@@ -11,11 +11,12 @@ public class CharacterController : MonoBehaviour
     [SerializeField] public float _health = 50;
     [SerializeField] public int _lvl = 0;
     [SerializeField] private float _coins = 1;
+    [SerializeField] private float _damageK = 1;
 
     public bool isDead = false;
     private Rigidbody _rb;
     private CharacterAnimationController _animController;
-    private CharacterUIController _ui;
+    [HideInInspector] public CharacterUIController _ui;
     private WeaponPrefabs _weaponPrefabs;
     public float _curHealth;
     public Action onLVLUp;
@@ -115,11 +116,11 @@ public class CharacterController : MonoBehaviour
     {
         if (from == this || isDead)
             return;
-        _curHealth -= damage;
+        _curHealth -= damage * _damageK;
         if (_curHealth <= 0)
         {
             _curHealth = 0;
-            from.AddCoins((int)MathF.Pow(2, _lvl));
+            from.AddCoins((int)MathF.Pow(2, _lvl * 0.75f));
             Death();
         }
         else

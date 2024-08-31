@@ -49,17 +49,11 @@ public class GameUIController : MonoBehaviour
 
     public void EndPanel(string title)
     {
+        TrueGameEnd();
         _gameAudio.Stop();
         _audioManager.PlayEnd();
-        PlusToSkin();
+        
         _title.text = title;
-        lvl = FindObjectOfType<PlayerController>().GetComponent<CharacterController>()._lvl;
-        collectedCoins = lvl > 2 ? lvl * 50 : 0;
-        rating = lvl > 2 ? (int)Mathf.Pow(lvl, 2) : 0;
-        YandexGame.savesData.coins += collectedCoins;
-        YandexGame.savesData.rating += rating;
-        YandexGame.SaveProgress();
-        YandexGame.NewLeaderboardScores("rating", YandexGame.savesData.rating);
         _coinsEarned.text = $"+{collectedCoins} {_coinsText[YandexGame.EnvironmentData.language]}\n+{rating} {_ratingText[YandexGame.EnvironmentData.language]}";
         _bg.localScale = _bg.localScale - Vector3.right;
         _title.transform.localScale = Vector3.zero;
@@ -77,6 +71,20 @@ public class GameUIController : MonoBehaviour
             .Join(_chest.DOScale(Vector3.one, 0.75f))
             .Append(_button.DOScale(Vector3.one, 0.75f))
             .Join(_buttonAd.DOScale(Vector3.one, 0.75f));
+    }
+
+    public void TrueGameEnd()
+    {
+        lvl = FindObjectOfType<PlayerController>().GetComponent<CharacterController>()._lvl;
+        if (lvl <= 2)
+            return;
+        PlusToSkin();
+        collectedCoins = lvl * 50;
+        rating = (int)Mathf.Pow(lvl, 2);
+        YandexGame.savesData.coins += collectedCoins;
+        YandexGame.savesData.rating += rating;
+        YandexGame.SaveProgress();
+        YandexGame.NewLeaderboardScores("rating", YandexGame.savesData.rating);
     }
 
     public void VideoReward()

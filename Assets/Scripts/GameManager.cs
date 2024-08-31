@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         _enemy.SetHero(_heroPrefabs.GetHero(Random.Range(0, _heroPrefabs.GetHeroesLength())));
         _enemy.SetSkin(Random.Range(0, 5));
         _enemy.SetWeapon(Random.Range(0, _weaponPrefabs.GetWeaponsLength()));
-        _enemy.GetComponent<EnemyController>().SetLVL(Mathf.Min(1, _player._lvl + Random.Range(-1, 2)));
+        _enemy.GetComponent<EnemyController>().SetLVL(Mathf.Max(1, Mathf.Min(_player._lvl + Random.Range(-1, 2), 10)));
         _enemy.onDeath += SpawnEnemy;
     }
 
