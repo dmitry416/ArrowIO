@@ -6,7 +6,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using YG;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -26,11 +25,11 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _dayly;
     [SerializeField] private TextMeshProUGUI _rating;
     [SerializeField] private Button _daylyButton;
+    [SerializeField] private TMP_InputField _nickname; 
 
     private string _daylyEnd = "";
     private TimeSpan _remain;
     private int _coins;
-    private Dictionary<string, string> _collectText = new Dictionary<string, string> { { "ru", "Получить" }, { "uz", "Oling" }, { "kk", "Алу" }, { "be", "Атрымаць" }, { "uk", "Одержавши" }, { "en", "Receive" }, { "tr", "Almak" }, { "es", "Obtener" }, { "de", "Bekommen" }, { "fr", "Recevoir" }, { "pt", "Obter" } };
 
     public Action canGetData;
     [HideInInspector] public int curSkin;
@@ -44,85 +43,63 @@ public class MenuUIController : MonoBehaviour
         set { _coins = value; UpdateCoins(); }
     }
 
-    private void OnEnable()
-    {
-        YandexGame.GetDataEvent += GetLoad;
-        YandexGame.PurchaseSuccessEvent += SuccessPurchased;
-        YandexGame.SwitchLangEvent += UpdateDalyTimer;
-        YandexGame.SwitchLangEvent += UpdateOnlyTimer;
-    }
-
-    private void OnDisable()
-    {
-        YandexGame.GetDataEvent -= GetLoad;
-        YandexGame.PurchaseSuccessEvent -= SuccessPurchased;
-        YandexGame.SwitchLangEvent -= UpdateDalyTimer;
-        YandexGame.SwitchLangEvent -= UpdateOnlyTimer;
-    }
-
-    void SuccessPurchased(string id)
-    {
-        switch (id)
-        {
-            case "2000":
-                coins += 2000;
-                break;
-            case "500":
-                coins += 500;
-                break;
-            case "1000":
-                coins += 1000;
-                break;
-        }
-        MySave();
-    }
-
     public void GetLoad()
     {
-        YandexGame.GameplayStop();
-        openSkins = YandexGame.savesData.openSkins;
-        openWeapons = YandexGame.savesData.openWeapons;
-        curSkin = YandexGame.savesData.selectedSkin;
-        curStyle = YandexGame.savesData.selectedStyle;
-        curWeapon = YandexGame.savesData.selectedWeapon;
-        coins = YandexGame.savesData.coins;
-        _rating.text = YandexGame.savesData.rating.ToString();
-        _daylyEnd = YandexGame.savesData.daylyEnded;
-        UpdateDalyTimer(YandexGame.savesData.language);
+        openSkins = new int[10];
+        for (int i = 0; i < openSkins.Length; ++i)
+            openSkins[i] = PlayerPrefs.GetInt(i.ToString(), -1);
+        openSkins[4] = 0;
+        openWeapons = new bool[6];
+        for (int i = 0; i < openWeapons.Length; ++i)
+            openWeapons[i] = PlayerPrefs.GetInt("w" + i.ToString(), 0) == 1;
+        openWeapons[0] = true;
+        curSkin = PlayerPrefs.GetInt("hero", 4);
+        curStyle = PlayerPrefs.GetInt("skin", 0);
+        curWeapon = PlayerPrefs.GetInt("weapon", 0);
+        coins = PlayerPrefs.GetInt("coins", 0);
+        _rating.text = PlayerPrefs.GetInt("rating").ToString();
+        _daylyEnd = PlayerPrefs.GetString("dayly", "");
+        UpdateDalyTimer();
         canGetData?.Invoke();
     }
 
     public void MySave()
     {
-        YandexGame.savesData.coins = coins;
-        YandexGame.SaveProgress();
+        PlayerPrefs.SetInt("coins", coins);
+        PlayerPrefs.Save();
     }
 
+    public void SaveNick()
+    {
+        PlayerPrefs.SetString("nick", _nickname.text);
+        PlayerPrefs.Save();
+    }
     public void SaveWeapon()
     {
-        YandexGame.savesData.openWeapons = openWeapons;
-        YandexGame.savesData.selectedWeapon = curWeapon;
-        YandexGame.SaveProgress();
+        for (int i = 0; i < openWeapons.Length; ++i)
+            PlayerPrefs.SetInt("w" + i.ToString(), openWeapons[i] ? 1 : 0);
+        PlayerPrefs.SetInt("weapon", curWeapon);
+        PlayerPrefs.Save();
     }
 
     public void SkinSave()
     {
-        YandexGame.savesData.openSkins = openSkins;
-        YandexGame.savesData.selectedSkin = curSkin;
-        YandexGame.savesData.selectedStyle = curStyle;
-        YandexGame.SaveProgress();
+        for (int i = 0; i < openSkins.Length; ++i)
+            PlayerPrefs.SetInt("w" + i.ToString(), openSkins[i]);
+        PlayerPrefs.SetInt("hero", curSkin);
+        PlayerPrefs.SetInt("skin", curStyle);
+        PlayerPrefs.Save();
     }
 
     public void SaveDay()
     {
-        YandexGame.savesData.daylyEnded = _daylyEnd;
-        YandexGame.SaveProgress();
+        PlayerPrefs.SetString("dayly", _daylyEnd);
+        PlayerPrefs.Save();
     }
 
     private void Start()
     {
-        if (YandexGame.SDKEnabled == true)
-            GetLoad();
+        GetLoad();
     }
 
     public void OpenGamePanel()
@@ -153,11 +130,11 @@ public class MenuUIController : MonoBehaviour
             .Append(_donat3.transform.DOScale(Vector3.one * 1.5f, 0.5f));
     }
 
-    public void UpdateDalyTimer(string lang)
+    public void UpdateDalyTimer()
     {
         if (_daylyEnd == "")
         {
-            _dayly.text = _collectText[lang];
+            _dayly.text = "Receive";
             _daylyButton.interactable = true;
         }
         else
@@ -212,21 +189,21 @@ public class MenuUIController : MonoBehaviour
 
     private IEnumerator Counter()
     {
-        UpdateOnlyTimer(YandexGame.EnvironmentData.language);
+        UpdateOnlyTimer();
         TimeSpan second = new TimeSpan(0, 0, 1);
         while (_remain.TotalSeconds > 0)
         {
-            UpdateOnlyTimer(YandexGame.EnvironmentData.language);
+            UpdateOnlyTimer();
             yield return new WaitForSeconds(1);
             _remain -= second;
         }
     }
 
-    private void UpdateOnlyTimer(string lang)
+    private void UpdateOnlyTimer()
     {
         if (_remain.TotalSeconds <= 1)
         {
-            _dayly.text = _collectText[lang];
+            _dayly.text = "Receive";
             _daylyButton.interactable = true;
         }
         else

@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using YG;
 
 [RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController), typeof(AudioSource))]
 public class CharacterController : MonoBehaviour
@@ -24,14 +23,12 @@ public class CharacterController : MonoBehaviour
     public Action<int> onCoinChanged;
     public Transform _target;
     public string _nick;
-    private LeaderboardUI _leaderboard;
     [HideInInspector] public AudioSource _audioSource;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();
-        _leaderboard = FindObjectOfType<LeaderboardUI>();
         _rb = GetComponent<Rigidbody>();
         _animController = GetComponent<CharacterAnimationController>();
         _ui = GetComponent<CharacterUIController>();
@@ -54,7 +51,7 @@ public class CharacterController : MonoBehaviour
     private void UpdateVolume()
     {
         if (_audioSource != null) 
-            _audioSource.volume = YandexGame.savesData.soundValue;
+            _audioSource.volume = PlayerPrefs.GetFloat("sound", 0.5f);
     }
 
     private void FindClosestEnemy()
@@ -205,7 +202,6 @@ public class CharacterController : MonoBehaviour
         _lvl++;
         _curHealth = _health;
         _ui.SetHP(_curHealth / _health);
-        _leaderboard.UpdateLeaderboard();
         _ui.SetLVL(_lvl);
         onLVLUp?.Invoke();
     }

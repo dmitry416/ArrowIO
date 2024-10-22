@@ -1,6 +1,5 @@
 using UnityEngine.UI;
 using UnityEngine;
-using YG;
 using UnityEngine.SceneManagement;
 using System;
 
@@ -14,37 +13,25 @@ public class SettingsController : MonoBehaviour
     public float soundValue = 1;
     public Action onUpdate;
 
-    private void OnEnable()
-    {
-        YandexGame.GetDataEvent += GetLoad;
-    }
-
-    private void OnDisable()
-    {
-        YandexGame.GetDataEvent -= GetLoad;
-    }
-
     public void GetLoad()
     {
-        musicValue = YandexGame.savesData.musicValue;
-        soundValue = YandexGame.savesData.soundValue;
+        musicValue = PlayerPrefs.GetFloat("music", 0.5f);
+        soundValue = PlayerPrefs.GetFloat("sound", 0.5f);
         _musicSlider.value = musicValue;
         _soundSlider.value = soundValue;
     }
 
     public void MySave()
     {
-        YandexGame.savesData.musicValue = musicValue;
-        YandexGame.savesData.soundValue = soundValue;
-
-        YandexGame.SaveProgress();
+        PlayerPrefs.SetFloat("music", musicValue);
+        PlayerPrefs.SetFloat("sound", soundValue);
+        PlayerPrefs.Save();
         onUpdate?.Invoke();
     }
 
     private void Start()
     {
-        if (YandexGame.SDKEnabled == true)
-            GetLoad();
+        GetLoad();
     }
 
     public void UpdateMusic()

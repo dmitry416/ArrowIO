@@ -1,2 +1,0 @@
-Build path: D:/unity builds/ArrowIO
-Build number: 20

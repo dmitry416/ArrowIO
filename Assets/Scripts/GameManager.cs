@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using YG;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _cvc;
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private GameUIController _gameUI;
+    [SerializeField] private LeaderboardUI _leaderboard;
     [Space]
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private GameObject _enemyPrefab;
@@ -22,15 +22,11 @@ public class GameManager : MonoBehaviour
 
     private bool _isGameStopped = false;
 
-    private Dictionary<string, string> _congeatText = new Dictionary<string, string> { { "ru", "Отлично" }, { "uz", "Ajoyib" }, { "kk", "Керемет" }, { "be", "Выдатна" }, { "uk", "Відмінно" }, { "en", "Great" }, { "tr", "Mükemmel" }, { "es", "Muy bien" }, { "de", "Ausgezeichnet" }, { "fr", "Parfaitement" }, { "pt", "Excelentemente" } };
-    private Dictionary<string, string> _timeText = new Dictionary<string, string> { { "ru", "Время вышло" }, { "uz", "Vaqt tugadi" }, { "kk", "Уақыт өтті" }, { "be", "Час выйшаў" }, { "uk", "Час вийшов" }, { "en", "Time's up" }, { "tr", "Zaman doldu" }, { "es", "Se acabó el tiempo" }, { "de", "Die Zeit ist abgelaufen" }, { "fr", "Le temps est écoulé" }, { "pt", "Acabou o tempo." } };
-
     private void Awake()
     {
-        YandexGame.GameplayStart();
-        _playerHero = YandexGame.savesData.selectedSkin;
-        _playerSkin = YandexGame.savesData.selectedStyle;
-        _playerWeapon = YandexGame.savesData.selectedWeapon;
+        _playerHero = PlayerPrefs.GetInt("hero", 4);
+        _playerSkin = PlayerPrefs.GetInt("skin", 0);
+        _playerWeapon = PlayerPrefs.GetInt("weapon", 0);
 
         _heroPrefabs = FindObjectOfType<HeroPrefabs>();
         _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();
@@ -39,27 +35,29 @@ public class GameManager : MonoBehaviour
         _player.SetSkin(_playerSkin);
         _player.SetWeapon(_playerWeapon);
         _cvc.Follow = _player.gameObject.transform;
+        _player.onLVLUp += _leaderboard.UpdateLeaderboard;
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            _player.onDeath += () => _gameUI.EndPanel(_congeatText[YandexGame.EnvironmentData.language]);
+            _player.onDeath += () => _gameUI.EndPanel("Great");
             _player.onDeath += Stop;
+            _player.onDeath += _leaderboard.UpdateLeaderboard;
         }
         else
         {
             _gameUI.SetTimer();
-            _gameUI.onTimerEnd += () => _gameUI.EndPanel(_timeText[YandexGame.EnvironmentData.language]);
+            _gameUI.onTimerEnd += () => _gameUI.EndPanel("Time's up");
             _gameUI.onTimerEnd += StopCharacters;
         }
 
         for (int i = 0; i < _enemySpawner._enemyCount; ++i)
             SpawnEnemy();
+        _leaderboard.UpdateLeaderboard();
     }
 
     private void StopCharacters()
     {
         _isGameStopped = true;
-        YandexGame.GameplayStop();
         foreach (CharacterController character in FindObjectsOfType<CharacterController>())
             character.Stop();
     }
@@ -73,13 +71,14 @@ public class GameManager : MonoBehaviour
         _enemy.SetSkin(Random.Range(0, 5));
         _enemy.SetWeapon(Random.Range(0, _weaponPrefabs.GetWeaponsLength()));
         _enemy.GetComponent<EnemyController>().SetLVL(Mathf.Max(1, Mathf.Min(_player._lvl + Random.Range(-1, 2), 10)));
+        _enemy.onLVLUp += _leaderboard.UpdateLeaderboard;
         _enemy.onDeath += SpawnEnemy;
+        _enemy.onDeath += _leaderboard.UpdateLeaderboard;
     }
 
     private void Stop()
     {
         _isGameStopped = true;
-        YandexGame.GameplayStop();
     }
 
     public Vector3 GetPlayerPos()

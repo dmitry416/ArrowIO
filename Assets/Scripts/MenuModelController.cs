@@ -1,7 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using YG;
 using System.Collections.Generic;
 
 public class MenuModelController : MonoBehaviour
@@ -16,8 +15,6 @@ public class MenuModelController : MonoBehaviour
     [SerializeField] private Sprite _selected;
     private int _curModel;
     private GameObject model;
-    private Dictionary<string, string> _selectText = new Dictionary<string, string> { { "ru", "ВЫБРАТЬ" }, { "uz", "Tanlang" }, { "kk", "Таңдау" }, { "be", "ВЫБРАЦЬ" }, { "uk", "ВИБРАТИ" }, { "en", "SELECT" }, { "tr", "SEÇMEK" }, { "es", "ELEGIR" }, { "de", "wählen" }, { "fr", "CHOISIR" }, { "pt", "SELECIONAR" } };
-    private Dictionary<string, string> _selectedText = new Dictionary<string, string> { { "ru", "ВЫБРАНО" }, { "uz", "Tanlangan" }, { "kk", "Таңдалған" }, { "be", "ВЫБРАНЫ" }, { "uk", "ВИБРАНИЙ" }, { "en", "SELECTED" }, { "tr", "SEÇME" }, { "es", "SELECCIONADO" }, { "de", "AKTIVIERT" }, { "fr", "SÉLECTIONNÉ" }, { "pt", "PREFERIDO" } };
 
     public void SetActiveModel()
     {
@@ -57,13 +54,13 @@ public class MenuModelController : MonoBehaviour
         else if (_curModel == _ui.curSkin)
         {
             _button.GetComponent<Image>().color = Color.gray;
-            _button.GetComponentInChildren<TextMeshProUGUI>().text = _selectedText[YandexGame.EnvironmentData.language];
+            _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECTED";
             _buttonIcon.sprite = _selected;
         }
         else
         {
             _button.GetComponent<Image>().color = Color.yellow;
-            _button.GetComponentInChildren<TextMeshProUGUI>().text = _selectText[YandexGame.EnvironmentData.language];
+            _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECT";
             _buttonIcon.sprite = _select;
         }
     }
@@ -87,7 +84,7 @@ public class MenuModelController : MonoBehaviour
             return;
         _ui.SkinSave();
         _button.GetComponent<Image>().color = Color.gray;
-        _button.GetComponentInChildren<TextMeshProUGUI>().text = _selectedText[YandexGame.EnvironmentData.language];
+        _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECTED";
         _buttonIcon.sprite = _selected;
     }
 

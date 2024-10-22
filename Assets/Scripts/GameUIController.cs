@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using YG;
 
 public class GameUIController : MonoBehaviour
 {
@@ -25,10 +24,6 @@ public class GameUIController : MonoBehaviour
     private int rating;
 
     public Action onTimerEnd;
-
-    private Dictionary<string, string> _coinsText = new Dictionary<string, string> { { "ru", "монет" }, { "uz", "tangalar" }, { "kk", "монеталар" }, { "be", "манета" }, { "uk", "монета" }, { "en", "coins" }, { "tr", "paralar" }, { "es", "metálico" }, { "de", "Münzen" }, { "fr", "espèce" }, { "pt", "SELECIONAR" } };
-    private Dictionary<string, string> _ratingText = new Dictionary<string, string> { { "ru", "рейтинг" }, { "uz", "reyting" }, { "kk", "рейтинг" }, { "be", "рэйтынг" }, { "uk", "рейтинг" }, { "en", "rating" }, { "tr", "derecelendirme" }, { "es", "rating" }, { "de", "Bewertung" }, { "fr", "classement" }, { "pt", "classificação" } };
-
 
     public void SetTimer() 
     {
@@ -54,7 +49,7 @@ public class GameUIController : MonoBehaviour
         _audioManager.PlayEnd();
         
         _title.text = title;
-        _coinsEarned.text = $"+{collectedCoins} {_coinsText[YandexGame.EnvironmentData.language]}\n+{rating} {_ratingText[YandexGame.EnvironmentData.language]}";
+        _coinsEarned.text = $"+{collectedCoins} coins";
         _bg.localScale = _bg.localScale - Vector3.right;
         _title.transform.localScale = Vector3.zero;
         _coinsEarned.transform.localScale = Vector3.zero;
@@ -81,26 +76,24 @@ public class GameUIController : MonoBehaviour
         PlusToSkin();
         collectedCoins = lvl * 50;
         rating = (int)Mathf.Pow(lvl, 2);
-        YandexGame.savesData.coins += collectedCoins;
-        YandexGame.savesData.rating += rating;
-        YandexGame.SaveProgress();
-        YandexGame.NewLeaderboardScores("rating", YandexGame.savesData.rating);
+        PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins", 0) + collectedCoins);
+        PlayerPrefs.SetInt("rating", PlayerPrefs.GetInt("rating", 0) + rating);
+        PlayerPrefs.Save();
     }
 
     public void VideoReward()
     {
         collectedCoins *= 2;
         rating *= 2;
-        YandexGame.savesData.coins += collectedCoins;
-        YandexGame.savesData.rating += rating;
-        YandexGame.SaveProgress();
-        YandexGame.NewLeaderboardScores("rating", YandexGame.savesData.rating);
-        _coinsEarned.text = $"+{collectedCoins} {_coinsText[YandexGame.EnvironmentData.language]}\n+{rating} {_ratingText[YandexGame.EnvironmentData.language]}";
+        PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins", 0) + collectedCoins);
+        PlayerPrefs.SetInt("rating", PlayerPrefs.GetInt("rating", 0) + rating);
+        PlayerPrefs.Save();
+        _coinsEarned.text = $"+{collectedCoins} rating";
     }
 
     public void PlusToSkin()
     {
-        YandexGame.savesData.openSkins[YandexGame.savesData.selectedSkin]++;
-        YandexGame.SaveProgress();
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("skin", 0).ToString(), PlayerPrefs.GetInt(PlayerPrefs.GetInt("skin", 0).ToString(), 0) + 1);
+        PlayerPrefs.Save();
     }
 }
