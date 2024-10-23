@@ -21,7 +21,7 @@ public class GrenadeFast : Shuriken
     {
         if (!_started)
             return;
-        if (other.TryGetComponent(out CharacterController me))
+        if (other.TryGetComponent(out CharacterControllerMy me))
             if (me == _hand.parent)
                 return;
         Explode();
@@ -30,7 +30,7 @@ public class GrenadeFast : Shuriken
     protected virtual void Explode()
     {
         foreach (Collider hit in Physics.OverlapSphere(transform.position, _radius, 1 << 6))
-            if (hit.gameObject.TryGetComponent(out CharacterController enemy))
+            if (hit.gameObject.TryGetComponent(out CharacterControllerMy enemy))
                 if (enemy != _hand.parent)
                     enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0f, 1f) <= _critChance ? 2 : 1));
         _explosionPrefab.SetActive(true);

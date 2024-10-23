@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     private HeroPrefabs _heroPrefabs;
     private WeaponPrefabs _weaponPrefabs;
-    private CharacterController _player;
+    private CharacterControllerMy _player;
 
     private bool _isGameStopped = false;
 
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         _heroPrefabs = FindObjectOfType<HeroPrefabs>();
         _weaponPrefabs = FindObjectOfType<WeaponPrefabs>();
-        _player = Instantiate(_playerPrefab).GetComponent<CharacterController>();
+        _player = Instantiate(_playerPrefab).GetComponent<CharacterControllerMy>();
         _player.SetHero(_heroPrefabs.GetHero(_playerHero));
         _player.SetSkin(_playerSkin);
         _player.SetWeapon(_playerWeapon);
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     private void StopCharacters()
     {
         _isGameStopped = true;
-        foreach (CharacterController character in FindObjectsOfType<CharacterController>())
+        foreach (CharacterControllerMy character in FindObjectsOfType<CharacterControllerMy>())
             character.Stop();
     }
     public void SpawnEnemy()
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         if (_isGameStopped)
             return;
         Vector3 position = _enemySpawner.GetPos();
-        CharacterController _enemy = Instantiate(_enemyPrefab, position, _enemyPrefab.transform.rotation).GetComponent<CharacterController>();
+        CharacterControllerMy _enemy = Instantiate(_enemyPrefab, position, _enemyPrefab.transform.rotation).GetComponent<CharacterControllerMy>();
         _enemy.SetHero(_heroPrefabs.GetHero(Random.Range(0, _heroPrefabs.GetHeroesLength())));
         _enemy.SetSkin(Random.Range(0, 5));
         _enemy.SetWeapon(Random.Range(0, _weaponPrefabs.GetWeaponsLength()));

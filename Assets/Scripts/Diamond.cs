@@ -11,7 +11,7 @@ public class Diamond : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out CharacterController character))
+        if (other.TryGetComponent(out CharacterControllerMy character))
         {
             character.AddCoins(1);
             Locate();

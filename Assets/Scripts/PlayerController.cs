@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterControllerMy))]
 public class PlayerController : MonoBehaviour 
 {
-    private CharacterController _charCont;
+    private CharacterControllerMy _charCont;
     private Hand _hand;
     private PlayerInput _input;
     private SkillGroupController _skillCont;
@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
         _input = new PlayerInput();
         _input.Player.Shoot.performed += context => _charCont.Shoot();
 
-        _charCont = GetComponent<CharacterController>();
+        _charCont = GetComponent<CharacterControllerMy>();
         _playerUI = GetComponent<PlayerUIController>();
         _hand = GetComponentInChildren<Hand>();
         _skillCont = FindObjectOfType<SkillGroupController>();

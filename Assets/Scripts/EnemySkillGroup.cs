@@ -3,7 +3,7 @@
 public class EnemySkillGroup : MonoBehaviour
 {
     [SerializeField] private Hand _hand;
-    [SerializeField] private CharacterController _charCont;
+    [SerializeField] private CharacterControllerMy _charCont;
 
     public void SelectSkill(Skills skill)
     {

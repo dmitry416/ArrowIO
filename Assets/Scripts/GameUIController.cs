@@ -49,7 +49,7 @@ public class GameUIController : MonoBehaviour
         _audioManager.PlayEnd();
         
         _title.text = title;
-        _coinsEarned.text = $"+{collectedCoins} coins";
+        _coinsEarned.text = $"+{collectedCoins} coins\n+{rating} rating";
         _bg.localScale = _bg.localScale - Vector3.right;
         _title.transform.localScale = Vector3.zero;
         _coinsEarned.transform.localScale = Vector3.zero;
@@ -70,7 +70,7 @@ public class GameUIController : MonoBehaviour
 
     public void TrueGameEnd()
     {
-        lvl = FindObjectOfType<PlayerController>().GetComponent<CharacterController>()._lvl;
+        lvl = FindObjectOfType<PlayerController>().GetComponent<CharacterControllerMy>()._lvl;
         if (lvl <= 2)
             return;
         PlusToSkin();
@@ -88,7 +88,7 @@ public class GameUIController : MonoBehaviour
         PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins", 0) + collectedCoins);
         PlayerPrefs.SetInt("rating", PlayerPrefs.GetInt("rating", 0) + rating);
         PlayerPrefs.Save();
-        _coinsEarned.text = $"+{collectedCoins} rating";
+        _coinsEarned.text = $"+{collectedCoins} coins\n+{rating} rating";
     }
 
     public void PlusToSkin()

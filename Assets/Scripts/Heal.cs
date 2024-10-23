@@ -7,7 +7,7 @@ public class Heal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out CharacterController character))
+        if (other.TryGetComponent(out CharacterControllerMy character))
         {
             character.AddHealth(25);
             Locate();

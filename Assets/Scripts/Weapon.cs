@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
     {
         if (!_started)
             return;
-        if (other.TryGetComponent(out CharacterController enemy))
+        if (other.TryGetComponent(out CharacterControllerMy enemy))
         {
             if (enemy == _hand.parent)
                 return;

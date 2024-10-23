@@ -319,7 +319,7 @@ public class EnemyController : MonoBehaviour
 {
     private Transform _whereToGo;
     private NavMeshAgent _agent;
-    private CharacterController _charCont;
+    private CharacterControllerMy _charCont;
     [SerializeField] private EnemySkillGroup _esg;
 
     public void SetLVL(int lvl)
@@ -335,7 +335,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _charCont = GetComponent<CharacterController>();
+        _charCont = GetComponent<CharacterControllerMy>();
         _charCont._speed = 0;
         _charCont.onDeath += Death;
         _charCont.onLVLUp += LvlUp;

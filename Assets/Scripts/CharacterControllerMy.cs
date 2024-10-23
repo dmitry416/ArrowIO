@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody), typeof(CharacterAnimationController), typeof(AudioSource))]
-public class CharacterController : MonoBehaviour
+public class CharacterControllerMy : MonoBehaviour
 {
     [SerializeField] private Hand _hand;
     [SerializeField] public float _speed;
@@ -60,7 +60,7 @@ public class CharacterController : MonoBehaviour
         float distance = Mathf.Infinity;
         foreach (Collider go in Physics.OverlapSphere(transform.position, 10, 1 << 6))
         {
-            if (go.GetComponent<CharacterController>().isDead || go.GetComponent<CharacterController>() == this)
+            if (go.GetComponent<CharacterControllerMy>().isDead || go.GetComponent<CharacterControllerMy>() == this)
                 continue;
             float curDistance = (go.transform.position - transform.position).sqrMagnitude;
             if (curDistance < distance)
@@ -109,7 +109,7 @@ public class CharacterController : MonoBehaviour
         _hand.Shoot();
     }
 
-    public void TakeDamage(CharacterController from, float damage)
+    public void TakeDamage(CharacterControllerMy from, float damage)
     {
         if (from == this || isDead)
             return;

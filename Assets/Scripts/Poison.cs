@@ -5,11 +5,11 @@ using UnityEngine;
 public class Poison : GrenadeFast
 {
     [SerializeField] protected float _delta = 1f;
-    protected List<CharacterController> _poisonedEnemys = new List<CharacterController>();
+    protected List<CharacterControllerMy> _poisonedEnemys = new List<CharacterControllerMy>();
     protected override void Explode()
     {
         foreach (Collider hit in Physics.OverlapSphere(transform.position, _radius, 1 << 6))
-            if (hit.gameObject.TryGetComponent(out CharacterController enemy))
+            if (hit.gameObject.TryGetComponent(out CharacterControllerMy enemy))
                 if (enemy != _hand.parent)
                     _poisonedEnemys.Add(enemy);
         Invoke("PoisonEnemys", _delta);
@@ -23,7 +23,7 @@ public class Poison : GrenadeFast
 
     protected void PoisonEnemys()
     {
-        foreach (CharacterController enemy in _poisonedEnemys)
+        foreach (CharacterControllerMy enemy in _poisonedEnemys)
             enemy.TakeDamage(_hand.parent, _damage * _hand._damageBaff * (Random.Range(0, 1) <= _critChance ? 2 : 1));
     }
 }

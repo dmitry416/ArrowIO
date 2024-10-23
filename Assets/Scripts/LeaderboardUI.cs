@@ -16,7 +16,7 @@ public class LeaderboardUI : MonoBehaviour
 
     public void UpdateLeaderboard()
     {
-        List<CharacterController> chars = FindObjectsOfType<CharacterController>().OrderBy(o => -o._lvl).ToList();
+        List<CharacterControllerMy> chars = FindObjectsOfType<CharacterControllerMy>().OrderBy(o => -o._lvl).ToList();
         switch (chars.Count)
         {
             case 0:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    public CharacterController parent;
+    public CharacterControllerMy parent;
     public Weapon weapon;
     public GameObject bow;
 
