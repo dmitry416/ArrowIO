@@ -149,6 +149,7 @@ public class YandexMobileAdsRewardedAdDemoScript : MonoBehaviour
     public void HandleRewarded(object sender, Reward args)
     {
         this.DisplayMessage($"HandleRewarded event received: amout = {args.amount}, type = {args.type}");
+        PlayerPrefs.SetInt("ad", 0);
         _gameUI.VideoReward();
     }
 

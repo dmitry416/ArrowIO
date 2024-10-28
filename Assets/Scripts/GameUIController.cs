@@ -93,7 +93,7 @@ public class GameUIController : MonoBehaviour
 
     public void PlusToSkin()
     {
-        PlayerPrefs.SetInt(PlayerPrefs.GetInt("skin", 0).ToString(), PlayerPrefs.GetInt(PlayerPrefs.GetInt("skin", 0).ToString(), 0) + 1);
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("hero", 0).ToString(), PlayerPrefs.GetInt(PlayerPrefs.GetInt("hero", 0).ToString(), 0) + 1);
         PlayerPrefs.Save();
     }
 }

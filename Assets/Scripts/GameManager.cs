@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.SetInt("ad", 1);
         _playerHero = PlayerPrefs.GetInt("hero", 4);
         _playerSkin = PlayerPrefs.GetInt("skin", 0);
         _playerWeapon = PlayerPrefs.GetInt("weapon", 0);

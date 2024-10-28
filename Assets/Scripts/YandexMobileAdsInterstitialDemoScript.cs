@@ -12,6 +12,8 @@ public class YandexMobileAdsInterstitialDemoScript : MonoBehaviour
 
     public void Awake()
     {
+        if (PlayerPrefs.GetInt("ad", 0) == 0)
+            return;
         this.interstitialAdLoader = new InterstitialAdLoader();
         this.interstitialAdLoader.OnAdLoaded += this.HandleAdLoaded;
         this.interstitialAdLoader.OnAdFailedToLoad += this.HandleAdFailedToLoad;
@@ -107,6 +109,7 @@ public class YandexMobileAdsInterstitialDemoScript : MonoBehaviour
         this.DisplayMessage("HandleAdLoaded event received");
 
         this.interstitial = args.Interstitial;
+        PlayerPrefs.SetInt("ad", 0);
         this.ShowInterstitial();
     }
 

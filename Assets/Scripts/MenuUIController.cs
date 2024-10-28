@@ -85,7 +85,7 @@ public class MenuUIController : MonoBehaviour
     public void SkinSave()
     {
         for (int i = 0; i < openSkins.Length; ++i)
-            PlayerPrefs.SetInt("w" + i.ToString(), openSkins[i]);
+            PlayerPrefs.SetInt(i.ToString(), openSkins[i]);
         PlayerPrefs.SetInt("hero", curSkin);
         PlayerPrefs.SetInt("skin", curStyle);
         PlayerPrefs.Save();
